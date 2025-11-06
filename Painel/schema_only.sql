@@ -1,10 +1,27 @@
--- Database Schema Export
--- Generated: 2025-11-06 16:57:42
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: demandium
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
 
-SET FOREIGN_KEY_CHECKS=0;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Table: accounts
+--
+-- Table structure for table `accounts`
+--
+
 DROP TABLE IF EXISTS `accounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `accounts` (
   `id` char(36) NOT NULL,
   `user_id` char(36) DEFAULT NULL,
@@ -18,9 +35,15 @@ CREATE TABLE `accounts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: added_to_carts
+--
+-- Table structure for table `added_to_carts`
+--
+
 DROP TABLE IF EXISTS `added_to_carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `added_to_carts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
@@ -31,9 +54,15 @@ CREATE TABLE `added_to_carts` (
   `is_guest` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: addon_settings
+--
+-- Table structure for table `addon_settings`
+--
+
 DROP TABLE IF EXISTS `addon_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `addon_settings` (
   `id` char(36) NOT NULL,
   `key_name` varchar(191) DEFAULT NULL,
@@ -48,9 +77,15 @@ CREATE TABLE `addon_settings` (
   PRIMARY KEY (`id`),
   KEY `payment_settings_id_index` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: advertisement_attachments
+--
+-- Table structure for table `advertisement_attachments`
+--
+
 DROP TABLE IF EXISTS `advertisement_attachments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `advertisement_attachments` (
   `id` char(36) NOT NULL,
   `advertisement_id` char(36) DEFAULT NULL,
@@ -61,9 +96,15 @@ CREATE TABLE `advertisement_attachments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: advertisement_notes
+--
+-- Table structure for table `advertisement_notes`
+--
+
 DROP TABLE IF EXISTS `advertisement_notes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `advertisement_notes` (
   `id` char(36) NOT NULL,
   `advertisement_id` char(36) DEFAULT NULL,
@@ -73,9 +114,15 @@ CREATE TABLE `advertisement_notes` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: advertisement_settings
+--
+-- Table structure for table `advertisement_settings`
+--
+
 DROP TABLE IF EXISTS `advertisement_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `advertisement_settings` (
   `id` char(36) NOT NULL,
   `advertisement_id` char(36) DEFAULT NULL,
@@ -85,9 +132,15 @@ CREATE TABLE `advertisement_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: advertisements
+--
+-- Table structure for table `advertisements`
+--
+
 DROP TABLE IF EXISTS `advertisements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `advertisements` (
   `id` char(36) NOT NULL,
   `readable_id` varchar(255) DEFAULT NULL,
@@ -105,9 +158,15 @@ CREATE TABLE `advertisements` (
   `is_updated` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: bank_details
+--
+-- Table structure for table `bank_details`
+--
+
 DROP TABLE IF EXISTS `bank_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bank_details` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) NOT NULL,
@@ -120,9 +179,15 @@ CREATE TABLE `bank_details` (
   `routing_number` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: banners
+--
+-- Table structure for table `banners`
+--
+
 DROP TABLE IF EXISTS `banners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `banners` (
   `id` char(36) NOT NULL,
   `banner_title` varchar(191) DEFAULT NULL,
@@ -135,9 +200,15 @@ CREATE TABLE `banners` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: bonuses
+--
+-- Table structure for table `bonuses`
+--
+
 DROP TABLE IF EXISTS `bonuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bonuses` (
   `id` char(36) NOT NULL,
   `bonus_title` varchar(255) NOT NULL,
@@ -153,9 +224,15 @@ CREATE TABLE `bonuses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_additional_information
+--
+-- Table structure for table `booking_additional_information`
+--
+
 DROP TABLE IF EXISTS `booking_additional_information`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_additional_information` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) NOT NULL,
@@ -165,9 +242,15 @@ CREATE TABLE `booking_additional_information` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_details
+--
+-- Table structure for table `booking_details`
+--
+
 DROP TABLE IF EXISTS `booking_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_details` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) DEFAULT NULL,
@@ -185,9 +268,15 @@ CREATE TABLE `booking_details` (
   `overall_coupon_discount_amount` decimal(24,3) NOT NULL DEFAULT 0.000,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_details_amounts
+--
+-- Table structure for table `booking_details_amounts`
+--
+
 DROP TABLE IF EXISTS `booking_details_amounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_details_amounts` (
   `id` char(36) NOT NULL,
   `booking_details_id` char(36) NOT NULL,
@@ -209,9 +298,15 @@ CREATE TABLE `booking_details_amounts` (
   `booking_repeat_details_id` char(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_ignores
+--
+-- Table structure for table `booking_ignores`
+--
+
 DROP TABLE IF EXISTS `booking_ignores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_ignores` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) DEFAULT NULL,
@@ -220,9 +315,15 @@ CREATE TABLE `booking_ignores` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_offline_payments
+--
+-- Table structure for table `booking_offline_payments`
+--
+
 DROP TABLE IF EXISTS `booking_offline_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_offline_payments` (
   `id` char(36) NOT NULL,
   `booking_id` char(36) NOT NULL,
@@ -235,9 +336,15 @@ CREATE TABLE `booking_offline_payments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_partial_payments
+--
+-- Table structure for table `booking_partial_payments`
+--
+
 DROP TABLE IF EXISTS `booking_partial_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_partial_payments` (
   `id` char(36) NOT NULL,
   `booking_id` varchar(255) NOT NULL,
@@ -248,9 +355,15 @@ CREATE TABLE `booking_partial_payments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_repeat_details
+--
+-- Table structure for table `booking_repeat_details`
+--
+
 DROP TABLE IF EXISTS `booking_repeat_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_repeat_details` (
   `id` char(36) NOT NULL,
   `booking_repeat_id` char(36) DEFAULT NULL,
@@ -270,9 +383,15 @@ CREATE TABLE `booking_repeat_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_repeat_histories
+--
+-- Table structure for table `booking_repeat_histories`
+--
+
 DROP TABLE IF EXISTS `booking_repeat_histories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_repeat_histories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -292,9 +411,15 @@ CREATE TABLE `booking_repeat_histories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_repeats
+--
+-- Table structure for table `booking_repeats`
+--
+
 DROP TABLE IF EXISTS `booking_repeats`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_repeats` (
   `id` char(36) NOT NULL,
   `readable_id` varchar(255) DEFAULT NULL,
@@ -331,9 +456,15 @@ CREATE TABLE `booking_repeats` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_schedule_histories
+--
+-- Table structure for table `booking_schedule_histories`
+--
+
 DROP TABLE IF EXISTS `booking_schedule_histories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_schedule_histories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) NOT NULL,
@@ -345,9 +476,15 @@ CREATE TABLE `booking_schedule_histories` (
   `booking_repeat_id` char(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: booking_status_histories
+--
+-- Table structure for table `booking_status_histories`
+--
+
 DROP TABLE IF EXISTS `booking_status_histories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `booking_status_histories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) NOT NULL,
@@ -359,9 +496,15 @@ CREATE TABLE `booking_status_histories` (
   `booking_repeat_id` char(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: bookings
+--
+-- Table structure for table `bookings`
+--
+
 DROP TABLE IF EXISTS `bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bookings` (
   `id` char(36) NOT NULL,
   `readable_id` bigint(20) NOT NULL,
@@ -403,9 +546,15 @@ CREATE TABLE `bookings` (
   `service_address_location` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: business_page_settings
+--
+-- Table structure for table `business_page_settings`
+--
+
 DROP TABLE IF EXISTS `business_page_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `business_page_settings` (
   `id` char(36) NOT NULL,
   `page_key` varchar(255) NOT NULL,
@@ -420,9 +569,15 @@ CREATE TABLE `business_page_settings` (
   UNIQUE KEY `business_page_settings_page_key_unique` (`page_key`),
   UNIQUE KEY `business_page_settings_title_unique` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: business_settings
+--
+-- Table structure for table `business_settings`
+--
+
 DROP TABLE IF EXISTS `business_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `business_settings` (
   `id` char(36) NOT NULL COMMENT '(DC2Type:guid)',
   `key_name` varchar(191) DEFAULT NULL,
@@ -435,9 +590,15 @@ CREATE TABLE `business_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: campaigns
+--
+-- Table structure for table `campaigns`
+--
+
 DROP TABLE IF EXISTS `campaigns`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `campaigns` (
   `id` char(36) NOT NULL,
   `campaign_name` varchar(191) DEFAULT NULL,
@@ -449,9 +610,15 @@ CREATE TABLE `campaigns` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: carts
+--
+-- Table structure for table `carts`
+--
+
 DROP TABLE IF EXISTS `carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `carts` (
   `id` char(36) NOT NULL,
   `customer_id` char(36) DEFAULT NULL,
@@ -474,9 +641,15 @@ CREATE TABLE `carts` (
   `coupon_id` char(36) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: categories
+--
+-- Table structure for table `categories`
+--
+
 DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categories` (
   `id` char(36) NOT NULL,
   `parent_id` char(36) DEFAULT NULL,
@@ -490,9 +663,15 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: category_zone
+--
+-- Table structure for table `category_zone`
+--
+
 DROP TABLE IF EXISTS `category_zone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category_zone` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `category_id` char(36) NOT NULL,
@@ -501,9 +680,15 @@ CREATE TABLE `category_zone` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: channel_conversations
+--
+-- Table structure for table `channel_conversations`
+--
+
 DROP TABLE IF EXISTS `channel_conversations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `channel_conversations` (
   `id` char(36) NOT NULL,
   `channel_id` char(36) NOT NULL,
@@ -514,9 +699,15 @@ CREATE TABLE `channel_conversations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: channel_lists
+--
+-- Table structure for table `channel_lists`
+--
+
 DROP TABLE IF EXISTS `channel_lists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `channel_lists` (
   `id` char(36) NOT NULL,
   `reference_id` char(36) DEFAULT NULL COMMENT '(DC2Type:guid)',
@@ -526,9 +717,15 @@ CREATE TABLE `channel_lists` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: channel_users
+--
+-- Table structure for table `channel_users`
+--
+
 DROP TABLE IF EXISTS `channel_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `channel_users` (
   `id` char(36) NOT NULL,
   `channel_id` char(36) NOT NULL,
@@ -539,9 +736,15 @@ CREATE TABLE `channel_users` (
   `is_read` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: conversation_files
+--
+-- Table structure for table `conversation_files`
+--
+
 DROP TABLE IF EXISTS `conversation_files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conversation_files` (
   `id` char(36) NOT NULL,
   `conversation_id` char(36) NOT NULL,
@@ -553,9 +756,15 @@ CREATE TABLE `conversation_files` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: coupon_customers
+--
+-- Table structure for table `coupon_customers`
+--
+
 DROP TABLE IF EXISTS `coupon_customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `coupon_customers` (
   `id` char(36) NOT NULL,
   `coupon_id` char(36) DEFAULT NULL,
@@ -564,9 +773,15 @@ CREATE TABLE `coupon_customers` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: coupons
+--
+-- Table structure for table `coupons`
+--
+
 DROP TABLE IF EXISTS `coupons`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `coupons` (
   `id` char(36) NOT NULL,
   `coupon_type` varchar(191) DEFAULT NULL,
@@ -577,9 +792,15 @@ CREATE TABLE `coupons` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: cron_jobs
+--
+-- Table structure for table `cron_jobs`
+--
+
 DROP TABLE IF EXISTS `cron_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cron_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
@@ -594,9 +815,15 @@ CREATE TABLE `cron_jobs` (
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: data_settings
+--
+-- Table structure for table `data_settings`
+--
+
 DROP TABLE IF EXISTS `data_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `data_settings` (
   `id` char(36) NOT NULL,
   `key` varchar(255) NOT NULL,
@@ -607,9 +834,15 @@ CREATE TABLE `data_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: discount_types
+--
+-- Table structure for table `discount_types`
+--
+
 DROP TABLE IF EXISTS `discount_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `discount_types` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `discount_id` char(36) DEFAULT NULL,
@@ -619,9 +852,15 @@ CREATE TABLE `discount_types` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: discounts
+--
+-- Table structure for table `discounts`
+--
+
 DROP TABLE IF EXISTS `discounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `discounts` (
   `id` char(36) NOT NULL,
   `discount_title` varchar(191) DEFAULT NULL,
@@ -639,9 +878,15 @@ CREATE TABLE `discounts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: employee_role_accesses
+--
+-- Table structure for table `employee_role_accesses`
+--
+
 DROP TABLE IF EXISTS `employee_role_accesses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee_role_accesses` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `employee_id` char(36) NOT NULL,
@@ -662,9 +907,15 @@ CREATE TABLE `employee_role_accesses` (
   `can_change_status` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: employee_role_sections
+--
+-- Table structure for table `employee_role_sections`
+--
+
 DROP TABLE IF EXISTS `employee_role_sections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee_role_sections` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `employee_id` char(36) NOT NULL,
@@ -673,9 +924,15 @@ CREATE TABLE `employee_role_sections` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: error_logs
+--
+-- Table structure for table `error_logs`
+--
+
 DROP TABLE IF EXISTS `error_logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `error_logs` (
   `id` char(36) NOT NULL,
   `status_code` int(11) DEFAULT NULL,
@@ -687,9 +944,15 @@ CREATE TABLE `error_logs` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: faqs
+--
+-- Table structure for table `faqs`
+--
+
 DROP TABLE IF EXISTS `faqs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `faqs` (
   `id` char(36) NOT NULL,
   `question` text DEFAULT NULL,
@@ -700,9 +963,15 @@ CREATE TABLE `faqs` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: favorite_providers
+--
+-- Table structure for table `favorite_providers`
+--
+
 DROP TABLE IF EXISTS `favorite_providers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `favorite_providers` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `customer_user_id` char(36) NOT NULL,
@@ -711,9 +980,15 @@ CREATE TABLE `favorite_providers` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: favorite_services
+--
+-- Table structure for table `favorite_services`
+--
+
 DROP TABLE IF EXISTS `favorite_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `favorite_services` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `customer_user_id` char(36) NOT NULL,
@@ -722,9 +997,15 @@ CREATE TABLE `favorite_services` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: guests
+--
+-- Table structure for table `guests`
+--
+
 DROP TABLE IF EXISTS `guests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `guests` (
   `id` char(36) NOT NULL,
   `guest_id` char(36) DEFAULT NULL,
@@ -734,9 +1015,15 @@ CREATE TABLE `guests` (
   `current_language_key` varchar(255) DEFAULT 'en',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: ignored_posts
+--
+-- Table structure for table `ignored_posts`
+--
+
 DROP TABLE IF EXISTS `ignored_posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ignored_posts` (
   `id` char(36) NOT NULL,
   `post_id` char(36) NOT NULL,
@@ -745,9 +1032,15 @@ CREATE TABLE `ignored_posts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: landing_page_features
+--
+-- Table structure for table `landing_page_features`
+--
+
 DROP TABLE IF EXISTS `landing_page_features`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `landing_page_features` (
   `id` char(36) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -758,9 +1051,15 @@ CREATE TABLE `landing_page_features` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: landing_page_specialities
+--
+-- Table structure for table `landing_page_specialities`
+--
+
 DROP TABLE IF EXISTS `landing_page_specialities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `landing_page_specialities` (
   `id` char(36) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -770,9 +1069,15 @@ CREATE TABLE `landing_page_specialities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: landing_page_testimonials
+--
+-- Table structure for table `landing_page_testimonials`
+--
+
 DROP TABLE IF EXISTS `landing_page_testimonials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `landing_page_testimonials` (
   `id` char(36) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -783,9 +1088,15 @@ CREATE TABLE `landing_page_testimonials` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: login_setups
+--
+-- Table structure for table `login_setups`
+--
+
 DROP TABLE IF EXISTS `login_setups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `login_setups` (
   `id` char(36) NOT NULL,
   `key` varchar(255) DEFAULT NULL,
@@ -794,9 +1105,15 @@ CREATE TABLE `login_setups` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: loyalty_point_transactions
+--
+-- Table structure for table `loyalty_point_transactions`
+--
+
 DROP TABLE IF EXISTS `loyalty_point_transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `loyalty_point_transactions` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -809,18 +1126,30 @@ CREATE TABLE `loyalty_point_transactions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: migrations
+--
+-- Table structure for table `migrations`
+--
+
 DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: modules
+--
+-- Table structure for table `modules`
+--
+
 DROP TABLE IF EXISTS `modules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `modules` (
   `id` char(36) NOT NULL,
   `module_name` varchar(191) DEFAULT NULL,
@@ -830,9 +1159,15 @@ CREATE TABLE `modules` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: notification_setups
+--
+-- Table structure for table `notification_setups`
+--
+
 DROP TABLE IF EXISTS `notification_setups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `notification_setups` (
   `id` char(36) NOT NULL,
   `user_type` varchar(255) DEFAULT NULL,
@@ -845,9 +1180,15 @@ CREATE TABLE `notification_setups` (
   `key_type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: oauth_access_tokens
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
 DROP TABLE IF EXISTS `oauth_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oauth_access_tokens` (
   `id` varchar(100) NOT NULL,
   `user_id` char(36) DEFAULT NULL,
@@ -861,9 +1202,15 @@ CREATE TABLE `oauth_access_tokens` (
   PRIMARY KEY (`id`),
   KEY `oauth_access_tokens_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: oauth_auth_codes
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
 DROP TABLE IF EXISTS `oauth_auth_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oauth_auth_codes` (
   `id` varchar(100) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -874,9 +1221,15 @@ CREATE TABLE `oauth_auth_codes` (
   PRIMARY KEY (`id`),
   KEY `oauth_auth_codes_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: oauth_clients
+--
+-- Table structure for table `oauth_clients`
+--
+
 DROP TABLE IF EXISTS `oauth_clients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oauth_clients` (
   `id` char(36) NOT NULL,
   `user_id` char(36) DEFAULT NULL,
@@ -892,9 +1245,15 @@ CREATE TABLE `oauth_clients` (
   PRIMARY KEY (`id`),
   KEY `oauth_clients_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: oauth_personal_access_clients
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
 DROP TABLE IF EXISTS `oauth_personal_access_clients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oauth_personal_access_clients` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `client_id` char(36) NOT NULL,
@@ -902,9 +1261,15 @@ CREATE TABLE `oauth_personal_access_clients` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: oauth_refresh_tokens
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
 DROP TABLE IF EXISTS `oauth_refresh_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `oauth_refresh_tokens` (
   `id` varchar(100) NOT NULL,
   `access_token_id` varchar(100) NOT NULL,
@@ -913,9 +1278,15 @@ CREATE TABLE `oauth_refresh_tokens` (
   PRIMARY KEY (`id`),
   KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: offline_payments
+--
+-- Table structure for table `offline_payments`
+--
+
 DROP TABLE IF EXISTS `offline_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `offline_payments` (
   `id` char(36) NOT NULL,
   `method_name` varchar(255) NOT NULL,
@@ -926,9 +1297,15 @@ CREATE TABLE `offline_payments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: package_subscriber_features
+--
+-- Table structure for table `package_subscriber_features`
+--
+
 DROP TABLE IF EXISTS `package_subscriber_features`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `package_subscriber_features` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) DEFAULT NULL,
@@ -938,9 +1315,15 @@ CREATE TABLE `package_subscriber_features` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: package_subscriber_limits
+--
+-- Table structure for table `package_subscriber_limits`
+--
+
 DROP TABLE IF EXISTS `package_subscriber_limits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `package_subscriber_limits` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) DEFAULT NULL,
@@ -952,9 +1335,15 @@ CREATE TABLE `package_subscriber_limits` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: package_subscriber_logs
+--
+-- Table structure for table `package_subscriber_logs`
+--
+
 DROP TABLE IF EXISTS `package_subscriber_logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `package_subscriber_logs` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) DEFAULT NULL,
@@ -971,9 +1360,15 @@ CREATE TABLE `package_subscriber_logs` (
   `primary_transaction_id` char(36) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: package_subscribers
+--
+-- Table structure for table `package_subscribers`
+--
+
 DROP TABLE IF EXISTS `package_subscribers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `package_subscribers` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) DEFAULT NULL,
@@ -994,9 +1389,15 @@ CREATE TABLE `package_subscribers` (
   `is_notified` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: password_resets
+--
+-- Table structure for table `password_resets`
+--
+
 DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `password_resets` (
   `email` varchar(255) DEFAULT NULL,
   `token` varchar(255) NOT NULL,
@@ -1006,9 +1407,15 @@ CREATE TABLE `password_resets` (
   `expires_at` datetime DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: payment_requests
+--
+-- Table structure for table `payment_requests`
+--
+
 DROP TABLE IF EXISTS `payment_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payment_requests` (
   `id` char(36) NOT NULL,
   `payer_id` varchar(64) DEFAULT NULL,
@@ -1031,9 +1438,15 @@ CREATE TABLE `payment_requests` (
   `attribute` varchar(255) DEFAULT NULL,
   `payment_platform` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: personal_access_tokens
+--
+-- Table structure for table `personal_access_tokens`
+--
+
 DROP TABLE IF EXISTS `personal_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tokenable_type` varchar(255) NOT NULL,
@@ -1048,9 +1461,15 @@ CREATE TABLE `personal_access_tokens` (
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: post_additional_information
+--
+-- Table structure for table `post_additional_information`
+--
+
 DROP TABLE IF EXISTS `post_additional_information`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `post_additional_information` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` char(36) NOT NULL,
@@ -1060,9 +1479,15 @@ CREATE TABLE `post_additional_information` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: post_additional_instructions
+--
+-- Table structure for table `post_additional_instructions`
+--
+
 DROP TABLE IF EXISTS `post_additional_instructions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `post_additional_instructions` (
   `id` char(36) NOT NULL,
   `details` text DEFAULT NULL,
@@ -1071,9 +1496,15 @@ CREATE TABLE `post_additional_instructions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: post_bids
+--
+-- Table structure for table `post_bids`
+--
+
 DROP TABLE IF EXISTS `post_bids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `post_bids` (
   `id` char(36) NOT NULL,
   `offered_price` decimal(24,2) NOT NULL DEFAULT 0.00,
@@ -1085,9 +1516,15 @@ CREATE TABLE `post_bids` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: posts
+--
+-- Table structure for table `posts`
+--
+
 DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `posts` (
   `id` char(36) NOT NULL,
   `service_description` text DEFAULT NULL,
@@ -1106,9 +1543,15 @@ CREATE TABLE `posts` (
   `is_guest` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: provider_notification_setups
+--
+-- Table structure for table `provider_notification_setups`
+--
+
 DROP TABLE IF EXISTS `provider_notification_setups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `provider_notification_setups` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `provider_id` char(36) DEFAULT NULL,
@@ -1118,9 +1561,15 @@ CREATE TABLE `provider_notification_setups` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: provider_settings
+--
+-- Table structure for table `provider_settings`
+--
+
 DROP TABLE IF EXISTS `provider_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `provider_settings` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) NOT NULL,
@@ -1134,9 +1583,15 @@ CREATE TABLE `provider_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: provider_sub_category
+--
+-- Table structure for table `provider_sub_category`
+--
+
 DROP TABLE IF EXISTS `provider_sub_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `provider_sub_category` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `provider_id` char(36) NOT NULL,
@@ -1145,9 +1600,15 @@ CREATE TABLE `provider_sub_category` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: providers
+--
+-- Table structure for table `providers`
+--
+
 DROP TABLE IF EXISTS `providers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `providers` (
   `id` char(36) NOT NULL,
   `user_id` char(36) DEFAULT NULL,
@@ -1178,9 +1639,15 @@ CREATE TABLE `providers` (
   `cover_image` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: providers_withdraw_methods_data
+--
+-- Table structure for table `providers_withdraw_methods_data`
+--
+
 DROP TABLE IF EXISTS `providers_withdraw_methods_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `providers_withdraw_methods_data` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) NOT NULL,
@@ -1195,9 +1662,15 @@ CREATE TABLE `providers_withdraw_methods_data` (
   KEY `providers_withdraw_methods_data_provider_id_index` (`provider_id`),
   KEY `providers_withdraw_methods_data_withdrawal_method_id_index` (`withdrawal_method_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: push_notification_users
+--
+-- Table structure for table `push_notification_users`
+--
+
 DROP TABLE IF EXISTS `push_notification_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `push_notification_users` (
   `id` char(36) NOT NULL,
   `push_notification_id` char(36) NOT NULL,
@@ -1206,9 +1679,15 @@ CREATE TABLE `push_notification_users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: push_notifications
+--
+-- Table structure for table `push_notifications`
+--
+
 DROP TABLE IF EXISTS `push_notifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `push_notifications` (
   `id` char(36) NOT NULL,
   `title` varchar(191) DEFAULT NULL,
@@ -1221,9 +1700,15 @@ CREATE TABLE `push_notifications` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: recent_searches
+--
+-- Table structure for table `recent_searches`
+--
+
 DROP TABLE IF EXISTS `recent_searches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recent_searches` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -1233,9 +1718,15 @@ CREATE TABLE `recent_searches` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: recent_views
+--
+-- Table structure for table `recent_views`
+--
+
 DROP TABLE IF EXISTS `recent_views`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recent_views` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -1250,9 +1741,15 @@ CREATE TABLE `recent_views` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: review_replies
+--
+-- Table structure for table `review_replies`
+--
+
 DROP TABLE IF EXISTS `review_replies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `review_replies` (
   `id` char(36) NOT NULL,
   `readable_id` bigint(20) DEFAULT NULL,
@@ -1263,9 +1760,15 @@ CREATE TABLE `review_replies` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: reviews
+--
+-- Table structure for table `reviews`
+--
+
 DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reviews` (
   `id` char(36) NOT NULL,
   `readable_id` bigint(20) NOT NULL,
@@ -1282,9 +1785,15 @@ CREATE TABLE `reviews` (
   `customer_id` char(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: role_accesses
+--
+-- Table structure for table `role_accesses`
+--
+
 DROP TABLE IF EXISTS `role_accesses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role_accesses` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` char(36) NOT NULL,
@@ -1304,9 +1813,15 @@ CREATE TABLE `role_accesses` (
   `can_change_status` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: roles
+--
+-- Table structure for table `roles`
+--
+
 DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
   `id` char(36) NOT NULL,
   `role_name` varchar(255) DEFAULT NULL,
@@ -1315,9 +1830,15 @@ CREATE TABLE `roles` (
   `is_active` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: route_search_histories
+--
+-- Table structure for table `route_search_histories`
+--
+
 DROP TABLE IF EXISTS `route_search_histories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `route_search_histories` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -1331,9 +1852,15 @@ CREATE TABLE `route_search_histories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: searched_data
+--
+-- Table structure for table `searched_data`
+--
+
 DROP TABLE IF EXISTS `searched_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `searched_data` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -1346,9 +1873,15 @@ CREATE TABLE `searched_data` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: seo_settings
+--
+-- Table structure for table `seo_settings`
+--
+
 DROP TABLE IF EXISTS `seo_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seo_settings` (
   `id` char(36) NOT NULL,
   `page_title` varchar(255) DEFAULT NULL,
@@ -1373,9 +1906,15 @@ CREATE TABLE `seo_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: service_requests
+--
+-- Table structure for table `service_requests`
+--
+
 DROP TABLE IF EXISTS `service_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `service_requests` (
   `id` char(36) NOT NULL,
   `category_id` char(36) DEFAULT NULL COMMENT '(DC2Type:guid)',
@@ -1388,9 +1927,15 @@ CREATE TABLE `service_requests` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: service_tag
+--
+-- Table structure for table `service_tag`
+--
+
 DROP TABLE IF EXISTS `service_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `service_tag` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `service_id` char(36) NOT NULL,
@@ -1399,9 +1944,15 @@ CREATE TABLE `service_tag` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: servicemen
+--
+-- Table structure for table `servicemen`
+--
+
 DROP TABLE IF EXISTS `servicemen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `servicemen` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) DEFAULT NULL,
@@ -1411,9 +1962,15 @@ CREATE TABLE `servicemen` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: services
+--
+-- Table structure for table `services`
+--
+
 DROP TABLE IF EXISTS `services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `services` (
   `id` char(36) NOT NULL,
   `name` varchar(191) DEFAULT NULL,
@@ -1434,9 +1991,15 @@ CREATE TABLE `services` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: settings_tutorials
+--
+-- Table structure for table `settings_tutorials`
+--
+
 DROP TABLE IF EXISTS `settings_tutorials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `settings_tutorials` (
   `id` char(36) NOT NULL,
   `user_id` char(36) NOT NULL,
@@ -1447,9 +2010,15 @@ CREATE TABLE `settings_tutorials` (
   PRIMARY KEY (`id`),
   KEY `settings_tutorials_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: storages
+--
+-- Table structure for table `storages`
+--
+
 DROP TABLE IF EXISTS `storages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `storages` (
   `id` char(36) NOT NULL,
   `model` varchar(255) NOT NULL,
@@ -1462,9 +2031,15 @@ CREATE TABLE `storages` (
   KEY `storages_model_id_index` (`model_id`),
   KEY `storages_model_column_index` (`model_column`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscribe_newsletters
+--
+-- Table structure for table `subscribe_newsletters`
+--
+
 DROP TABLE IF EXISTS `subscribe_newsletters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscribe_newsletters` (
   `id` char(36) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -1473,9 +2048,15 @@ CREATE TABLE `subscribe_newsletters` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `subscribe_newsletters_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscribed_services
+--
+-- Table structure for table `subscribed_services`
+--
+
 DROP TABLE IF EXISTS `subscribed_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscribed_services` (
   `id` char(36) NOT NULL,
   `provider_id` char(36) NOT NULL,
@@ -1486,9 +2067,15 @@ CREATE TABLE `subscribed_services` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscription_booking_types
+--
+-- Table structure for table `subscription_booking_types`
+--
+
 DROP TABLE IF EXISTS `subscription_booking_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscription_booking_types` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `booking_id` char(36) DEFAULT NULL,
@@ -1497,9 +2084,15 @@ CREATE TABLE `subscription_booking_types` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscription_package_features
+--
+-- Table structure for table `subscription_package_features`
+--
+
 DROP TABLE IF EXISTS `subscription_package_features`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscription_package_features` (
   `id` char(36) NOT NULL,
   `subscription_package_id` char(36) DEFAULT NULL,
@@ -1508,9 +2101,15 @@ CREATE TABLE `subscription_package_features` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscription_package_limits
+--
+-- Table structure for table `subscription_package_limits`
+--
+
 DROP TABLE IF EXISTS `subscription_package_limits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscription_package_limits` (
   `id` char(36) NOT NULL,
   `subscription_package_id` char(36) DEFAULT NULL,
@@ -1521,9 +2120,15 @@ CREATE TABLE `subscription_package_limits` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscription_packages
+--
+-- Table structure for table `subscription_packages`
+--
+
 DROP TABLE IF EXISTS `subscription_packages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscription_packages` (
   `id` char(36) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -1535,9 +2140,15 @@ CREATE TABLE `subscription_packages` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: subscription_subscriber_bookings
+--
+-- Table structure for table `subscription_subscriber_bookings`
+--
+
 DROP TABLE IF EXISTS `subscription_subscriber_bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subscription_subscriber_bookings` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `provider_id` char(36) DEFAULT NULL,
@@ -1547,9 +2158,15 @@ CREATE TABLE `subscription_subscriber_bookings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: tags
+--
+-- Table structure for table `tags`
+--
+
 DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tags` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tag` text NOT NULL,
@@ -1557,9 +2174,15 @@ CREATE TABLE `tags` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: transactions
+--
+-- Table structure for table `transactions`
+--
+
 DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transactions` (
   `id` char(36) NOT NULL,
   `ref_trx_id` char(36) DEFAULT NULL,
@@ -1579,9 +2202,15 @@ CREATE TABLE `transactions` (
   `booking_repeat_id` char(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: translations
+--
+-- Table structure for table `translations`
+--
+
 DROP TABLE IF EXISTS `translations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `translations` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `translationable_type` varchar(255) NOT NULL,
@@ -1593,9 +2222,15 @@ CREATE TABLE `translations` (
   KEY `translations_translationable_id_index` (`translationable_id`),
   KEY `translations_locale_index` (`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: user_addresses
+--
+-- Table structure for table `user_addresses`
+--
+
 DROP TABLE IF EXISTS `user_addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_addresses` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` char(36) DEFAULT NULL,
@@ -1618,9 +2253,15 @@ CREATE TABLE `user_addresses` (
   `floor` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: user_verifications
+--
+-- Table structure for table `user_verifications`
+--
+
 DROP TABLE IF EXISTS `user_verifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_verifications` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `identity` varchar(255) NOT NULL,
@@ -1635,9 +2276,15 @@ CREATE TABLE `user_verifications` (
   `temp_block_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: user_zones
+--
+-- Table structure for table `user_zones`
+--
+
 DROP TABLE IF EXISTS `user_zones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_zones` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` char(36) DEFAULT NULL,
@@ -1646,9 +2293,15 @@ CREATE TABLE `user_zones` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: users
+--
+-- Table structure for table `users`
+--
+
 DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` char(36) NOT NULL,
   `first_name` varchar(191) DEFAULT NULL,
@@ -1683,9 +2336,15 @@ CREATE TABLE `users` (
   `current_language_key` varchar(255) DEFAULT 'en',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: variations
+--
+-- Table structure for table `variations`
+--
+
 DROP TABLE IF EXISTS `variations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `variations` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `variant` varchar(191) DEFAULT NULL,
@@ -1697,9 +2356,15 @@ CREATE TABLE `variations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: visited_services
+--
+-- Table structure for table `visited_services`
+--
+
 DROP TABLE IF EXISTS `visited_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `visited_services` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` char(36) NOT NULL,
@@ -1709,9 +2374,15 @@ CREATE TABLE `visited_services` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: withdraw_requests
+--
+-- Table structure for table `withdraw_requests`
+--
+
 DROP TABLE IF EXISTS `withdraw_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `withdraw_requests` (
   `id` char(36) NOT NULL,
   `user_id` char(36) DEFAULT NULL,
@@ -1727,9 +2398,15 @@ CREATE TABLE `withdraw_requests` (
   `withdrawal_method_fields` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: withdrawal_methods
+--
+-- Table structure for table `withdrawal_methods`
+--
+
 DROP TABLE IF EXISTS `withdrawal_methods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `withdrawal_methods` (
   `id` char(36) NOT NULL,
   `method_name` varchar(255) NOT NULL,
@@ -1740,9 +2417,15 @@ CREATE TABLE `withdrawal_methods` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Table: zones
+--
+-- Table structure for table `zones`
+--
+
 DROP TABLE IF EXISTS `zones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zones` (
   `id` char(36) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -1753,5 +2436,15 @@ CREATE TABLE `zones` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `zones_name_unique` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS=1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-11-06 16:57:18

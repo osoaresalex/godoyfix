@@ -5,7 +5,7 @@ class AppConstants {
 
   static const String appName = 'Godoy Resolve';
   static const String appVersion = '3.3'; /// Flutter SDK : 3.25.1
-  static const String baseUrl = 'https://4f9f3a79700e.ngrok-free.app';
+  static const String baseUrl = 'https://godoyfix-production.up.railway.app';
   static const bool avoidMaintenanceMode = false;
   static const LocalCachesTypeEnum cachesType = LocalCachesTypeEnum.all;
   static const String categoryUrl = '/api/v1/customer/category?limit=20';
