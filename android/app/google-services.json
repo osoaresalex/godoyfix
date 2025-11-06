@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1034882966291",
+    "project_id": "godoy-resolve-app",
+    "storage_bucket": "godoy-resolve-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034882966291:android:d73d9d96468b45678cb0e6",
+        "android_client_info": {
+          "package_name": "com.godoyresolve.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034882966291-hs0rror9l2okf29mrj8805s41q5o4r52.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.godoyresolve.user",
+            "certificate_hash": "3c1a1fd465a107518b1532c918f5c6179ba9abb4"
+          }
+        },
+        {
+          "client_id": "1034882966291-a9434ldid983sjuia20clbl30lrpue6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF6QunV6J00twc48Z2om6P40pRlr6GnE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034882966291-a9434ldid983sjuia20clbl30lrpue6g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
