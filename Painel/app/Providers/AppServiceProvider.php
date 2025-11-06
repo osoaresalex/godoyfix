@@ -37,6 +37,15 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
+        // Override asset URL generation to remove /public/ prefix
+        \URL::macro('asset', function ($path, $secure = null) {
+            // Remove 'public/' prefix if present
+            $path = preg_replace('#^public/#', '', $path);
+            
+            $root = \URL::to('/', $secure);
+            return $root . '/' . ltrim($path, '/');
+        });
+
         // Fix /public/assets/ URLs in responses
         $this->app['events']->listen('kernel.handled', function ($request, $response) {
             if ($response instanceof \Illuminate\Http\Response || 
