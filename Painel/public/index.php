@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+// Start output buffering to fix asset URLs
+ob_start();
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
@@ -50,6 +53,19 @@ $kernel = $app->make(Kernel::class);
 
 $response = $kernel->handle(
     $request = Request::capture()
-)->send();
+);
+
+// Get buffered output and fix /public/assets/ URLs
+$content = ob_get_clean();
+if (!empty($content)) {
+    echo str_replace('/public/assets/', '/assets/', $content);
+} else {
+    // If buffer is empty, fix response content
+    $responseContent = $response->getContent();
+    if ($responseContent && strpos($responseContent, '/public/assets/') !== false) {
+        $response->setContent(str_replace('/public/assets/', '/assets/', $responseContent));
+    }
+    $response->send();
+}
 
 $kernel->terminate($request, $response);
