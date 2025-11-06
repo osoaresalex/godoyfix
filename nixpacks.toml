@@ -2,7 +2,11 @@
 nixPkgs = ["...", "php82", "php82Packages.composer"]
 
 [phases.install]
-cmds = ["cd Painel && composer install --no-dev --optimize-autoloader"]
+cmds = [
+  "cd Painel && composer clear-cache",
+  "cd Painel && composer dump-autoload --optimize",
+  "cd Painel && composer install --no-dev --optimize-autoloader --no-cache"
+]
 
 [phases.build]
 cmds = []
