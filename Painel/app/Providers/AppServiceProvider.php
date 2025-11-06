@@ -37,6 +37,20 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
+        // Fix /public/assets/ URLs in responses
+        $this->app['events']->listen('kernel.handled', function ($request, $response) {
+            if ($response instanceof \Illuminate\Http\Response || 
+                $response instanceof \Illuminate\Http\JsonResponse) {
+                
+                $content = $response->getContent();
+                
+                if ($content && strpos($content, '/public/assets/') !== false) {
+                    $content = str_replace('/public/assets/', '/assets/', $content);
+                    $response->setContent($content);
+                }
+            }
+        });
+
         Config::set('addon_admin_routes',$this->get_addon_admin_routes());
         Config::set('get_payment_publish_status',$this->get_payment_publish_status());
 
