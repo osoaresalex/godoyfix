@@ -14,6 +14,20 @@ use Modules\ProviderManagement\Entities\Provider;
 use Modules\ProviderManagement\Entities\SubscribedService;
 use Modules\UserManagement\Entities\User;
 
+/**
+ * Override Laravel asset() helper to fix /public/ prefix in URLs for Railway deployment
+ */
+if (!function_exists('asset')) {
+    function asset($path, $secure = null)
+    {
+        // Remove 'public/' prefix if present in the path
+        $path = preg_replace('#^public/#', '', $path);
+        
+        // Use Laravel's default asset generation
+        return app('url')->asset($path, $secure);
+    }
+}
+
 if (!function_exists('translate')) {
     function translate($key)
     {
