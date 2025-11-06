@@ -37,11 +37,6 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
-        // Fix asset URLs for Railway deployment - remove /public prefix
-        if (env('APP_ENV') === 'production' && str_contains(env('APP_URL', ''), 'railway.app')) {
-            \URL::forceRootUrl(rtrim(env('APP_URL', ''), '/'));
-        }
-
         Config::set('addon_admin_routes',$this->get_addon_admin_routes());
         Config::set('get_payment_publish_status',$this->get_payment_publish_status());
 

@@ -28,7 +28,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
        // \Illuminate\Http\Middleware\HandleCors::class,
-        ZoneAdder::class
+        ZoneAdder::class,
+        \App\Http\Middleware\FixAssetUrls::class,  // Fix /public/assets/ URLs for Railway
     ];
 
     /**
