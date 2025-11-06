@@ -7,7 +7,6 @@ cmds = ["cd Painel && composer install --no-dev --optimize-autoloader"]
 [phases.build]
 cmds = [
     "cd Painel && php artisan config:cache",
-    "cd Painel && php artisan route:cache",
     "cd Painel && php artisan view:cache"
 ]
 
