@@ -199,7 +199,7 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/admin-module/plugins/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{asset('assets/admin-module/plugins/tinymce/tinymce.min.js')}}"></script>
 <script>
 
 </script>

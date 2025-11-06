@@ -24,26 +24,26 @@
         rel="stylesheet">
 
     {{-- old icon link --}}
-    <link href="{{asset('public/assets/admin-module')}}/css/material-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('public/assets/provider-module')}}/plugins/webfonts/uicons-regular-rounded.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/provider-module')}}/plugins/webfonts/uicons-solid-rounded.css"/>
+    <link href="{{asset('assets/admin-module')}}/css/material-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/provider-module')}}/plugins/webfonts/uicons-regular-rounded.css"/>
+    <link rel="stylesheet" href="{{asset('assets/provider-module')}}/plugins/webfonts/uicons-solid-rounded.css"/>
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/css/bootstrap.min.css"/>
     <link rel="stylesheet"
-          href="{{asset('public/assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.css"/>
+          href="{{asset('assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.css"/>
 
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/plugins/apex/apexcharts.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/plugins/select2/select2.min.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/plugins/apex/apexcharts.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/plugins/select2/select2.min.css"/>
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/css/toastr.css">
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/css/toastr.css">
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module/plugins/intl-tel-input/css/intlTelInput.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin-module/plugins/intl-tel-input/css/intlTelInput.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/css/style.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/css/dev.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module')}}/css/dev-tahir.css"/>
-    <link rel="stylesheet" href="{{asset('public/assets/common')}}/css/common.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/css/style.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/css/dev.css"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module')}}/css/dev-tahir.css"/>
+    <link rel="stylesheet" href="{{asset('assets/common')}}/css/common.css"/>
 
     @stack('css_or_js')
 </head>
@@ -76,7 +76,7 @@
 
     @if(env('APP_ENV') == 'demo')
         <div class="alert alert--message-2 alert-dismissible fade show" id="demo-reset-warning">
-            <img width="28" class="align-self-start" src="{{ asset('public/assets/admin-module/img/info-2.png') }}" alt="">
+            <img width="28" class="align-self-start" src="{{ asset('assets/admin-module/img/info-2.png') }}" alt="">
             <div class="w-0 flex-grow-1">
                 <h6>{{ translate('warning').'!'}}</h6>
                 <span class="warning-message">
@@ -96,27 +96,27 @@
 </main>
 
 
-<script src="{{asset('public/assets/admin-module')}}/js/jquery-3.6.0.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/main.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/helper.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/jquery-3.6.0.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/main.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/helper.js"></script>
 
 
-<script src="{{asset('public/assets/admin-module')}}/plugins/select2/select2.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/plugins/select2/select2.min.js"></script>
 
-<script src="{{asset('public/assets/common')}}/js/common-image-upload.js"></script>
-<script src="{{asset('public/assets/common')}}/js/common.js"></script>
+<script src="{{asset('assets/common')}}/js/common-image-upload.js"></script>
+<script src="{{asset('assets/common')}}/js/common.js"></script>
 
-<script src="{{asset('public/assets/admin-module')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/toastr.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/dev.js"></script>
-<script src="{{ asset('public/assets/admin-module/plugins/intl-tel-input/js/intlTelInput.js') }}"></script>
-<script src="{{ asset('public/assets/admin-module/js/country-picker-init.js') }}"></script>
+<script src="{{asset('assets/admin-module')}}/js/sweet_alert.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/toastr.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/dev.js"></script>
+<script src="{{ asset('assets/admin-module/plugins/intl-tel-input/js/intlTelInput.js') }}"></script>
+<script src="{{ asset('assets/admin-module/js/country-picker-init.js') }}"></script>
 {!! Toastr::message() !!}
 
 <audio id="audio-element">
-    <source src="{{asset('public/assets/provider-module')}}/sound/notification.mp3" type="audio/mpeg">
+    <source src="{{asset('assets/provider-module')}}/sound/notification.mp3" type="audio/mpeg">
 </audio>
 
 <script>

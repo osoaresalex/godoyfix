@@ -129,15 +129,15 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
     </form>
 </div>
 
-<script src="{{asset('public/assets/provider-module')}}/js/jquery-3.6.0.min.js"></script>
-<script src="{{asset('public/assets/provider-module')}}/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('public/assets/provider-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="{{asset('public/assets/provider-module')}}/js/main.js"></script>
+<script src="{{asset('assets/provider-module')}}/js/jquery-3.6.0.min.js"></script>
+<script src="{{asset('assets/provider-module')}}/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('assets/provider-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{{asset('assets/provider-module')}}/js/main.js"></script>
 
 
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-<script src="{{asset('public/assets/provider-module')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/provider-module')}}/js/toastr.js"></script>
+<script src="{{asset('assets/provider-module')}}/js/sweet_alert.js"></script>
+<script src="{{asset('assets/provider-module')}}/js/toastr.js"></script>
 {!! Toastr::message() !!}
 
 @php($recaptcha = business_config('recaptcha', 'third_party'))

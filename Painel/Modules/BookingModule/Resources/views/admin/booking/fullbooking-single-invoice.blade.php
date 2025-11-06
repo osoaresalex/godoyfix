@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{translate('invoice')}}</title>
-    <script src="{{asset('public/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('public/assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <style>
         body {
             background-color: #F9FCFF;
@@ -167,7 +167,7 @@ h1, h2,h3,h4, h5, h6 {
                 <tr>
                     <td>
                         <h3 class="text-uppercase fw-700">{{translate("invoice")}}</h3>
-                        <div>{{translate('Booking')}} #{{$booking->readable_id}} <img src="{{ asset('public/assets/admin-module/img/repeat.png') }}" width="15px" height="15px" alt=""></div>
+                        <div>{{translate('Booking')}} #{{$booking->readable_id}} <img src="{{ asset('assets/admin-module/img/repeat.png') }}" width="15px" height="15px" alt=""></div>
                         <div>{{translate('date')}}: {{date('d-M-Y h:ia',strtotime($booking->created_at))}}</div>
                     </td>
                     <td class="company-details">

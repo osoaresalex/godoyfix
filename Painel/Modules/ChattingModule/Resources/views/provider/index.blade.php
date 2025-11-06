@@ -3,7 +3,7 @@
 @section('title',translate('chat_list'))
 
 @push('css_or_js')
-    <link rel="stylesheet" href="{{asset('public/assets/css/lightbox.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/lightbox.css')}}">
 @endpush
 
 @section('content')
@@ -90,7 +90,7 @@
                                                         src="{{onErrorImage(
                                                                 'null',
                                                                 asset('storage/app/public/serviceman/profile').'/',
-                                                                asset('public/assets/admin-module/img/media/user.png') ,
+                                                                asset('assets/admin-module/img/media/user.png') ,
                                                                 'serviceman/profile/')}}"
                                                     @endif
                                                     class="avatar rounded-circle">
@@ -196,7 +196,7 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/js/lightbox.min.js')}}"></script>
+    <script src="{{asset('assets/js/lightbox.min.js')}}"></script>
     <script>
         "use Strict";
 
@@ -237,6 +237,6 @@
         }
     </script>
 
-    <script src="{{asset('public/assets/chatting-module/js/provider.js')}}"></script>
+    <script src="{{asset('assets/chatting-module/js/provider.js')}}"></script>
 
 @endpush

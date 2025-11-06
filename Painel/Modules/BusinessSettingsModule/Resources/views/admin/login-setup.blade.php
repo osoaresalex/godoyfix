@@ -411,7 +411,7 @@
                 <button type="button" class="btn-close position-absolute right-3 top-3 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body text-center">
                     <div>
-                        <img src="{{ asset('public/assets/admin-module/img/sms-img.png') }}" alt="{{ translate('image') }}">
+                        <img src="{{ asset('assets/admin-module/img/sms-img.png') }}" alt="{{ translate('image') }}">
                     </div>
                     <div class="py-4">
                         <h4 class="modal-title" id="smsConfigModalLabel">{{ translate('Set Up SMS Configuration First') }}</h4>
@@ -432,7 +432,7 @@
                 <button type="button" class="btn-close position-absolute right-3 top-3 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body text-center">
                     <div>
-                        <img src="{{ asset('public/assets/admin-module/img/sms-img.png') }}" alt="{{ translate('image') }}">
+                        <img src="{{ asset('assets/admin-module/img/sms-img.png') }}" alt="{{ translate('image') }}">
                     </div>
                     <div class="py-4">
                         <h4 class="modal-title" id="socialMediaConfigModalLabel">{{ translate('Set Up Social Media Configuration First') }}</h4>

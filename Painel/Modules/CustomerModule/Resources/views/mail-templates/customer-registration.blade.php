@@ -158,7 +158,7 @@
         <h5>{{translate('Dear')}} {{$customer?->first_name}},</h5>
         <p>{{translate('Your account for our on-demand service platform has been created.')}}.</p>
 
-        <img src="{{ asset('public/assets/admin-module/img/user-registration-mail.png') }}" alt="{{translate('Image')}}"
+        <img src="{{ asset('assets/admin-module/img/user-registration-mail.png') }}" alt="{{translate('Image')}}"
              width="400" height="172"/>
 
         <div class="my-1">{{translate('Your account credential:')}}</div>
@@ -192,7 +192,7 @@
             @foreach($dataValues->live_values??[] as $key=>$item)
                 <a href="{{$item['link']}}">
                     <img width="20"
-                         src="{{ asset('public/assets/admin-module/img/icons/' . $item['media'] . '.png') }}"
+                         src="{{ asset('assets/admin-module/img/icons/' . $item['media'] . '.png') }}"
                          alt="{{ translate('image') }}">
                 </a>
             @endforeach

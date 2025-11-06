@@ -315,7 +315,7 @@
                                                             @can('configuration_update')
                                                             <a href="{{( env('APP_ENV') == 'demo') ? 'javascript:' :route('admin.language.translate',[$data['code']]) }}" class="rounded transition fw-bold text-nowrap fz-12 fw-semibold text-primary outline-primary-hover btn-primary btn-outline-primary d-flex align-items-center gap-1 py-2 px-3">
 {{--                                                                <span class="material-symbols-outlined">translate</span> View--}}
-                                                                <img src="{{ asset('public/assets/admin-module/img/icons/translate-icon.svg') }}"> {{ translate('view') }}
+                                                                <img src="{{ asset('assets/admin-module/img/icons/translate-icon.svg') }}"> {{ translate('view') }}
                                                             </a>
                                                             <div class="btn-group">
                                                                 <button type="button" class="rounded transition fw-bold text-nowrap fz-12 fw-semibold text-primary outline-primary-hover btn-primary btn-outline-primary d-flex align-items-center gap-1 py-2 px-1 d-center w-35px" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -347,7 +347,7 @@
                                                                                     data-url="{{route('admin.language.delete',[$data['code']])}}"
                                                                                     data-title="{{ translate('want_to_delete_this_language')}}?"
                                                                                     data-description="{{ translate('Once delete, you would not be translate this language') }}"
-                                                                                    data-image="{{ asset('public/assets/admin-module/img/modal/delete-icon.svg') }}"
+                                                                                    data-image="{{ asset('assets/admin-module/img/modal/delete-icon.svg') }}"
                                                                             >
                                                                                 <i class="material-symbols-outlined">delete</i> {{ translate('Delete') }}
                                                                             </button>

@@ -13,7 +13,7 @@
              src="{{onErrorImage(
                 $logo,
                 asset('storage/app/public/restaurant').'/' . $logo,
-                asset('public/assets/admin-module/img/img1.jpg') ,
+                asset('assets/admin-module/img/img1.jpg') ,
                 'restaurant/')}}"
              alt="{{ translate('logo') }}"
              class="dark-support onerror-image"

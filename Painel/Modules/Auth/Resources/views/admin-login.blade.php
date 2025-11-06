@@ -123,13 +123,13 @@ $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'bus
 </div>
 
 
-<script src="{{asset('public/assets/admin-module')}}/js/jquery-3.6.0.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/bootstrap.bundle.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/main.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/jquery-3.6.0.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/main.js"></script>
 
-<script src="{{asset('public/assets/admin-module')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/admin-module')}}/js/toastr.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/sweet_alert.js"></script>
+<script src="{{asset('assets/admin-module')}}/js/toastr.js"></script>
 {!! Toastr::message() !!}
 
 @php($recaptcha = business_config('recaptcha', 'third_party'))

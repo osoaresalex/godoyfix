@@ -122,7 +122,7 @@
                                 <tr>
                                     <td class="text-center bg-white  pt-5 pb-5" colspan="7">
                                         <div class="d-flex flex-column gap-2">
-                                            <img src="{{asset('public/assets/admin-module')}}/img/log-list-error.svg" alt="error" class="w-100px mx-auto">
+                                            <img src="{{asset('assets/admin-module')}}/img/log-list-error.svg" alt="error" class="w-100px mx-auto">
                                             <p>{{translate('data not found')}}</p>
                                         </div>
                                     </td>
@@ -194,7 +194,7 @@
                 <div class="modal-body p-30">
                     <button type="button" class="btn-close bg-light rounded-full" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img class="mb-20" src="{{asset('public/assets/admin-module')}}/img/delete.png" alt="">
+                        <img class="mb-20" src="{{asset('assets/admin-module')}}/img/delete.png" alt="">
                         <h3 class="mb-15">{{ translate('Do you want to delete Facebook?')}}</h3>
                         <p class="mb-4 fz-14">{{ translate(' Once deleted, it will no longer appear in the website footer.')}}</p>
                         <form action="" method="post">

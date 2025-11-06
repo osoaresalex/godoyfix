@@ -3,9 +3,9 @@
 @section('title',translate('category_setup'))
 
 @push('css_or_js')
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module/plugins/select2/select2.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module/plugins/dataTables/jquery.dataTables.min.css')}}"/>
-    <link rel="stylesheet" href="{{asset('public/assets/admin-module/plugins/dataTables/select.dataTables.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module/plugins/select2/select2.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module/plugins/dataTables/jquery.dataTables.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/admin-module/plugins/dataTables/select.dataTables.min.css')}}"/>
 @endpush
 
 @section('content')
@@ -96,7 +96,7 @@
                                                                accept=".{{ implode(',.', array_column(IMAGEEXTENSION, 'key')) }}, |image/*">
                                                         <div class="upload-file__img">
                                                             <img
-                                                                src="{{asset('public/assets/admin-module/img/media/upload-file.png')}}"
+                                                                src="{{asset('assets/admin-module/img/media/upload-file.png')}}"
                                                                 alt="{{translate('image')}}">
                                                         </div>
                                                         <span class="upload-file__edit">
@@ -205,10 +205,10 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/admin-module')}}/plugins/select2/select2.min.js"></script>
-    <script src="{{asset('public/assets/category-module')}}/js/category/create.js"></script>
-    <script src="{{asset('public/assets/admin-module')}}/plugins/dataTables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/admin-module')}}/plugins/dataTables/dataTables.select.min.js"></script>
+    <script src="{{asset('assets/admin-module')}}/plugins/select2/select2.min.js"></script>
+    <script src="{{asset('assets/category-module')}}/js/category/create.js"></script>
+    <script src="{{asset('assets/admin-module')}}/plugins/dataTables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('assets/admin-module')}}/plugins/dataTables/dataTables.select.min.js"></script>
 
     <script>
         "use strict"
@@ -272,8 +272,8 @@
             $('.confirmation-description-text').text(confirmationDescriptionText);
 
             let imgSrc = initialState
-                ? "{{ asset('public/assets/admin-module/img/icons/status-on.png') }}"
-                : "{{ asset('public/assets/admin-module/img/icons/status-off.png') }}";
+                ? "{{ asset('assets/admin-module/img/icons/status-on.png') }}"
+                : "{{ asset('assets/admin-module/img/icons/status-off.png') }}";
 
             $('#confirmChangeModal img').attr('src', imgSrc);
 

@@ -107,7 +107,7 @@
                                                         data-url="{{route('admin.business-page-setup.delete',[$page->id])}}"
                                                         data-title="{{ translate('want_to_delete_this_business_page')}}?"
                                                         data-description="{{ translate('You will not be able to revert this!') }}"
-                                                        data-image="{{ asset('public/assets/admin-module/img/modal/delete-icon.svg') }}"
+                                                        data-image="{{ asset('assets/admin-module/img/modal/delete-icon.svg') }}"
                                                 >
                                                     <i class="material-symbols-outlined">delete</i>
                                                 </button>
@@ -146,7 +146,7 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/admin-module/plugins/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{asset('assets/admin-module/plugins/tinymce/tinymce.min.js')}}"></script>
 
     <script>
         "use strict";
@@ -194,8 +194,8 @@
                     : '{{ translate('Once you turn off the page status, it will be hidden from users.') }}';
 
                 let imgSrc = itemStatus == '1'
-                    ? "{{ asset('public/assets/admin-module/img/icons/status-on.png') }}"
-                    : "{{ asset('public/assets/admin-module/img/icons/status-off.png') }}";
+                    ? "{{ asset('assets/admin-module/img/icons/status-on.png') }}"
+                    : "{{ asset('assets/admin-module/img/icons/status-off.png') }}";
 
                 $('.confirmation-title-text').text(confirmationTitleText);
                 $('.confirmation-description-text').text(confirmationDescriptionText);
