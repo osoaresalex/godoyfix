@@ -16,15 +16,29 @@ class FixAssetUrls
         $response = $next($request);
 
         // Only process HTML responses
-        if ($response->headers->get('Content-Type') && 
-            strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-            
+        $contentType = $response->headers->get('Content-Type');
+        
+        \Log::info('FixAssetUrls Middleware', [
+            'path' => $request->path(),
+            'content_type' => $contentType,
+            'status' => $response->status()
+        ]);
+        
+        if ($contentType && strpos($contentType, 'text/html') !== false) {
             $content = $response->getContent();
+            $originalLength = strlen($content);
             
             // Replace all occurrences of /public/assets/ with /assets/
             $content = str_replace('/public/assets/', '/assets/', $content);
-            $content = preg_replace('#https?://[^/]+/public/assets/#', '$0/../assets/', $content);
             $content = preg_replace('#(https?://[^/]+)/public/assets/#', '$1/assets/', $content);
+            
+            $newLength = strlen($content);
+            
+            \Log::info('FixAssetUrls Applied', [
+                'original_length' => $originalLength,
+                'new_length' => $newLength,
+                'replacements_made' => $originalLength !== $newLength
+            ]);
             
             $response->setContent($content);
         }
