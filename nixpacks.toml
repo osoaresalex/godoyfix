@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ["...", "php82", "php82Packages.composer"]
+
+[phases.install]
+cmds = ["cd Painel && composer install --no-dev --optimize-autoloader"]
+
+[phases.build]
+cmds = [
+    "cd Painel && php artisan config:cache",
+    "cd Painel && php artisan route:cache",
+    "cd Painel && php artisan view:cache"
+]
+
+[start]
+cmd = "cd Painel && php artisan serve --host=0.0.0.0 --port=$PORT"
