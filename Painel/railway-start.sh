@@ -17,6 +17,11 @@ php artisan route:clear || true
 php artisan optimize:clear || true
 echo "=== LARAVEL CACHES CLEARED ==="
 
+# Force recompile all views from source
+echo "=== FORCING VIEW RECOMPILATION ==="
+php force-recompile-views.php || true
+echo "=== VIEW RECOMPILATION COMPLETE ==="
+
 # Rebuild caches
 echo "=== REBUILDING CACHES ==="
 php artisan config:cache
