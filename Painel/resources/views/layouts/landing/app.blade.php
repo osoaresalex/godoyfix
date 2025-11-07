@@ -118,7 +118,7 @@
     </div>
 </div>
 <header>
-    @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
+    @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png')))
 
     <div class="navbar-bottom">
         <div class="container">
@@ -212,7 +212,7 @@
                         </div>
                     </div>
 
-                    @php($footerPages = \Modules\BusinessSettingsModule\Entities\BusinessPageSetting::where('is_active', 1)->orderBy('created_at', 'ASC')->get()))
+                    @php($footerPages = \Modules\BusinessSettingsModule\Entities\BusinessPageSetting::where('is_active', 1)->orderBy('created_at', 'ASC')->get())
                     <div class="footer__wrapper-widget">
                         <ul class="footer__wrapper-link">
                             <li>
