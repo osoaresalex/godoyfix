@@ -29,7 +29,7 @@
 <body>
 <div class="preloader"></div>
 <?php
-$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png'));
+$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath: asset('assets/admin-module/img/placeholder.png'));
 ?>
 
 <div>
