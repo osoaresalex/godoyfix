@@ -1,0 +1,93 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: demandium-app:latest
+    container_name: demandium_app
+    restart: unless-stopped
+    env_file:
+      - ./Painel/.env
+    volumes:
+      - ./Painel/storage:/var/www/Painel/storage
+      - ./Painel/bootstrap/cache:/var/www/Painel/bootstrap/cache
+    networks:
+      - appnet
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: demandium_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./Painel/public:/var/www/Painel/public:ro
+      - ./Painel/storage:/var/www/Painel/storage:ro
+    depends_on:
+      - app
+    networks:
+      - appnet
+
+  mysql:
+    image: mysql:8.0
+    container_name: demandium_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: demandium
+      MYSQL_USER: demandium
+      MYSQL_PASSWORD: demandium
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - appnet
+
+  redis:
+    image: redis:7-alpine
+    container_name: demandium_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - appnet
+
+  queue:
+    image: demandium-app:latest
+    container_name: demandium_queue
+    depends_on:
+      - app
+      - redis
+    restart: unless-stopped
+    command: ["php", "/var/www/Painel/artisan", "queue:work", "--sleep=3", "--tries=3"]
+    volumes:
+      - ./Painel/storage:/var/www/Painel/storage
+    env_file:
+      - ./Painel/.env
+    networks:
+      - appnet
+
+  scheduler:
+    image: demandium-app:latest
+    container_name: demandium_scheduler
+    depends_on:
+      - app
+    restart: unless-stopped
+    command: ["sh", "-c", "while true; do php /var/www/Painel/artisan schedule:run --verbose --no-interaction; sleep 60; done"]
+    volumes:
+      - ./Painel/storage:/var/www/Painel/storage
+    env_file:
+      - ./Painel/.env
+    networks:
+      - appnet
+
+volumes:
+  db_data:
+
+networks:
+  appnet:
+    driver: bridge
