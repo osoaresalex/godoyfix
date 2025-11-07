@@ -220,7 +220,7 @@
     <section class="cta-section py-25">
         <div class="container">
             <div class="cta-main">
-                @php($providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png'))
+                @php($providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png')))
 
                 <div class="cta-wrapper bg__img" data-img="{{ asset('assets/landing') }}/img/cta-bg.png">
                     <img width="238" src="{{ $providerSectionImage }}" alt="{{ translate('image') }}"
