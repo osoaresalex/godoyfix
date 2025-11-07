@@ -50,24 +50,32 @@ if [ -f ".env" ]; then
     # Remove old VIEW_COMPILED_PATH and VIEW_CACHE_DISABLED if they exist
     sed -i '/^VIEW_COMPILED_PATH=/d' .env
     sed -i '/^VIEW_CACHE_DISABLED=/d' .env
+    
+    echo "Current .env contents (first 20 lines):"
+    head -n 20 .env
 fi
 
 # Append critical config to .env
 echo "VIEW_COMPILED_PATH=/app/Painel/storage/framework/views" >> .env
-echo "VIEW_CACHE_DISABLED=true" >> .env
+echo "VIEW_CACHE_DISABLED=false" >> .env
 
 echo ".env file updated with view cache configuration"
-cat .env | grep VIEW_ || echo "Warning: VIEW_ vars not found in .env"
+echo "Verify .env has VIEW_ vars:"
+cat .env | grep VIEW_ || echo "ERROR: VIEW_ vars NOT in .env!"
 
 # Also export as env vars for current shell session
 export VIEW_COMPILED_PATH="/app/Painel/storage/framework/views"
-export VIEW_CACHE_DISABLED=true
+export VIEW_CACHE_DISABLED=false
 export APP_DEBUG=true
 export LOG_LEVEL=debug
 
-echo "Environment variables set:"
+echo "Environment variables set in shell:"
 echo "  VIEW_COMPILED_PATH=$VIEW_COMPILED_PATH"
 echo "  VIEW_CACHE_DISABLED=$VIEW_CACHE_DISABLED"
+
+# Test reading .env with PHP
+echo "Test reading VIEW_COMPILED_PATH from .env using PHP:"
+php -r "require 'vendor/autoload.php'; \$dotenv = Dotenv\Dotenv::createImmutable(__DIR__); \$dotenv->load(); echo 'VIEW_COMPILED_PATH from env(): ' . ($_ENV['VIEW_COMPILED_PATH'] ?? 'NOT SET') . PHP_EOL;"
 
 # Remove any cached bootstrap files that could store an invalid compiled path
 if [ -d "bootstrap/cache" ]; then
