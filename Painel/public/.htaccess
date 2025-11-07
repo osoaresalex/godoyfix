@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # Redirect /public/assets/ to /assets/ (fix Railway asset URLs)
+    RewriteCond %{REQUEST_URI} ^/public/assets/(.*)$
+    RewriteRule ^public/assets/(.*)$ /assets/$1 [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
