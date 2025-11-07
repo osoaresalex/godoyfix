@@ -5,7 +5,17 @@ echo "RAILWAY STARTUP SCRIPT RUNNING"
 echo "PWD: $(pwd)"
 echo "============================================"
 
-# CRITICAL: Install Composer dependencies FIRST
+# CRITICAL: Create cache directories BEFORE Composer (Laravel needs them during package:discover)
+echo "=== CREATING REQUIRED DIRECTORIES (PRE-COMPOSER) ==="
+mkdir -p ./storage/framework/sessions
+mkdir -p ./storage/framework/views
+mkdir -p ./storage/framework/cache/data
+mkdir -p ./storage/logs
+mkdir -p ./bootstrap/cache
+chmod -R 775 ./storage ./bootstrap/cache 2>/dev/null || true
+echo "=== DIRECTORIES CREATED ==="
+
+# Install Composer dependencies (will run package:discover which needs cache dirs)
 echo "=== INSTALLING COMPOSER DEPENDENCIES ==="
 if [ ! -d "vendor" ] || [ ! -f "vendor/autoload.php" ]; then
     echo "vendor/ not found or incomplete, running composer install..."
@@ -14,17 +24,6 @@ else
     echo "vendor/ exists, skipping composer install"
 fi
 echo "=== COMPOSER DEPENDENCIES INSTALLED ==="
-
-# Create required Laravel directories with absolute paths
-echo "=== CREATING REQUIRED DIRECTORIES ==="
-mkdir -p ./storage/framework/sessions
-mkdir -p ./storage/framework/views
-mkdir -p ./storage/framework/cache/data
-mkdir -p ./storage/logs
-mkdir -p ./bootstrap/cache
-chmod -R 775 ./storage ./bootstrap/cache
-ls -la storage/framework/ || echo "Failed to create storage/framework"
-echo "=== DIRECTORIES CREATED ==="
 
 # Delete cache files
 echo "=== DELETING CACHE FILES ==="
