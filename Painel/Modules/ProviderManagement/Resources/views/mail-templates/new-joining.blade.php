@@ -165,7 +165,7 @@
 <body>
 <div class="box">
     <div class="top-wrap-box">
-        @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png'))
+        @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
         <img src="{{$logo}}" alt="{{translate('Logo')}}" width="140"/>
 
         <h3 style="margin-top: 20px">{{translate('New Joining Request')}} !</h3>

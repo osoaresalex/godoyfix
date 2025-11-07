@@ -142,7 +142,7 @@
                     </a>
                 </div>
                 <div class="about__wrapper-thumb">
-                    @php($aboutUsImage = getBusinessSettingsImageFullPath(key: 'about_us_image', settingType: 'landing_images', path: 'landing-page/', defaultPath: 'public/assets/placeholder.png'))
+                    @php($aboutUsImage = getBusinessSettingsImageFullPath(key: 'about_us_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png'))
                     <img class="main-img" src="{{ $aboutUsImage }}" alt="{{ translate('image') }}">
                     <div class="bg-img">
                         <img src="{{ asset('assets/landing') }}/img/about-us.png" alt="{{ translate('image') }}">
@@ -220,7 +220,7 @@
     <section class="cta-section py-25">
         <div class="container">
             <div class="cta-main">
-                @php($providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath: 'public/assets/placeholder.png'))
+                @php($providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png'))
 
                 <div class="cta-wrapper bg__img" data-img="{{ asset('assets/landing') }}/img/cta-bg.png">
                     <img width="238" src="{{ $providerSectionImage }}" alt="{{ translate('image') }}"

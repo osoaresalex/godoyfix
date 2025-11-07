@@ -77,7 +77,7 @@
                                         $gatewayReadyToUse = 0;
                                     }
                                 }
-                                $gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath: 'public/assets/admin-module/img/placeholder.png');
+                                $gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath : asset('assets/admin-module/img/placeholder.png');
                                 ?>
                             <div class="d-flex align-items-center gap-2">
                                 <h5 class="text-dark"> {{ ucwords(str_replace('_',' ',$gateway->key_name)) }}</h5> <span

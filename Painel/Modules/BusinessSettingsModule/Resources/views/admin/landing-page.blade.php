@@ -1304,7 +1304,7 @@
                                                                            name="{{$key}}" id="image-{{$key}}"
                                                                            accept=".{{ implode(',.', array_column(IMAGEEXTENSION, 'key')) }}, |image/*">
                                                                     <div class="upload-file__img">
-                                                                        @php($image = getBusinessSettingsImageFullPath(key: $key, settingType: 'landing_images', path: 'landing-page/',  defaultPath : 'public/assets/admin-module/img/media/upload-file.png'))
+                                                                        @php($image = getBusinessSettingsImageFullPath(key: $key, settingType: 'landing_images', path: 'landing-page/',  defaultPath : asset('assets/admin-module/img/media/upload-file.png'))
                                                                         <img src="{{ $image }}" alt="{{translate('image')}}">
                                                                     </div>
                                                                     <span class="upload-file__edit">
@@ -1543,7 +1543,7 @@
                                                                        name="meta_image"
                                                                        accept=".{{ implode(',.', array_column(IMAGEEXTENSION, 'key')) }}, |image/*">
                                                                 <div class="upload-file__img">
-                                                                    @php($image = getBusinessSettingsImageFullPath(key: 'meta_image', settingType: 'landing_meta', path: 'landing-page/meta/',  defaultPath : 'public/assets/placeholder.png'))
+                                                                    @php($image = getBusinessSettingsImageFullPath(key: 'meta_image', settingType: 'landing_meta', path: 'landing-page/meta/',  defaultPath : asset('assets/placeholder.png'))
                                                                     <img src="{{ $image }}" alt="{{translate('image')}}">
                                                                 </div>
                                                                 <span class="upload-file__edit">
@@ -2247,7 +2247,7 @@
                                                                            name="{{$key}}" id="image-{{$key}}"
                                                                            accept=".{{ implode(',.', array_column(IMAGEEXTENSION, 'key')) }}, |image/*">
                                                                     <div class="upload-file__img">
-                                                                        @php($image = getBusinessSettingsImageFullPath(key: $key, settingType: 'landing_web_app_image', path: 'landing-page/web/',  defaultPath : 'public/assets/admin-module/img/media/upload-file.png'))
+                                                                        @php($image = getBusinessSettingsImageFullPath(key: $key, settingType: 'landing_web_app_image', path: 'landing-page/web/',  defaultPath : asset('assets/admin-module/img/media/upload-file.png'))
                                                                         <img src="{{ $image }}" alt="{{translate('image')}}">
 
                                                                     </div>

@@ -15,7 +15,7 @@ $pending_booking_count = \Modules\BookingModule\Entities\Booking::providerPendin
     ->count();
 $accepted_booking_count = \Modules\BookingModule\Entities\Booking::providerAcceptedBookings(auth()->user()->provider->id, $maxBookingAmount)->count();
 
-$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/admin-module/img/placeholder.png');
+$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png');
 ?>
 
 @php($provider = auth()->user()->provider)

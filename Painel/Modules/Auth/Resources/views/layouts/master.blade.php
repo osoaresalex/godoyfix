@@ -9,7 +9,7 @@
     <meta name="keywords" content=""/>
 
     <?php
-    $favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/placeholder.png')
+    $favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/placeholder.png')
     ?>
     <link rel="shortcut icon" href="{{ $favIcon }}"/>
 
@@ -37,7 +37,7 @@
 <div class="preloader"></div>
 
 <?php
-$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/placeholder.png');
+$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/placeholder.png');
 ?>
 
 @yield('content')

@@ -2366,7 +2366,7 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        @php($gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath: 'public/assets/admin-module/img/placeholder.png'))
+                                                                        @php($gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath : asset('assets/admin-module/img/placeholder.png'))
                                                                         <div class="payment--gateway-img justify-content-center d-flex align-items-center">
                                                                             <img class="payment-image-preview" id="{{$gateway->key_name}}-image-preview"
                                                                                  src="{{ $gatewayImageFullPath }}" alt="{{ translate('image') }}">
@@ -2544,7 +2544,7 @@
                                                                         </div>
 
                                                                         <div class="payment--gateway-img justify-content-center d-flex align-items-center">
-                                                                            @php($gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath: 'public/assets/admin-module/img/placeholder.png'))
+                                                                            @php($gatewayImageFullPath = getPaymentGatewayImageFullPath(key: $gateway->key_name, settingsType: $gateway->settings_type, defaultPath : asset('assets/admin-module/img/placeholder.png'))
 
                                                                             <img class="payment-image-preview" id="{{$gateway->key_name}}-image-preview"
                                                                                 src="{{$gatewayImageFullPath}}" alt="{{translate('image')}}">

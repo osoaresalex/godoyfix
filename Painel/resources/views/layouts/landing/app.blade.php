@@ -118,7 +118,7 @@
     </div>
 </div>
 <header>
-    @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png'))
+    @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
 
     <div class="navbar-bottom">
         <div class="container">

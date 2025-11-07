@@ -156,7 +156,7 @@
 
             <div class="d-flex flex-column gap-1 align-items-end text-right">
                 @php
-                    $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/admin-module/img/media/banner-upload-file.png');
+                    $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/media/banner-upload-file.png');
 
                     $business_name = business_config('business_name','business_information');
                     $business_email = business_config('business_email','business_information');

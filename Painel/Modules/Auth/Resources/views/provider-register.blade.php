@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <?php
-    $favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/admin-module/img/placeholder.png')
+    $favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png')
     ?>
     <link rel="shortcut icon" href="{{ $favIcon }}"/>
 
@@ -36,7 +36,7 @@
     <div class="preloader"></div>
 
     <?php
-    $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/admin-module/img/placeholder.png');
+    $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png');
     ?>
 
     <div class="dark-support">

@@ -196,7 +196,7 @@
                 <div class="row">
                     <div class="col">
                         <a target="_blank" href="#">
-                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png'))
+                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
                             <img width="200" src="{{ $logo }}"
                                  data-holder-rendered="true"/>
                         </a>

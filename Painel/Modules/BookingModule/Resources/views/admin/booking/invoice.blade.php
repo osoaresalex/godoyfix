@@ -173,7 +173,7 @@ h1, h2,h3,h4, h5, h6 {
                     </td>
                     <td class="company-details">
                         <a target="_blank" href="#">
-                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png'))
+                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
                             <img width="84" height="17"
                                  src="{{$logo}}" alt="{{ translate('logo') }}"
                                  data-holder-rendered="true"/>

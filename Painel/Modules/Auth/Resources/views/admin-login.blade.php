@@ -8,7 +8,7 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="robots" content="nofollow, noindex ">
-    @php($favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : 'assets/admin-module/img/placeholder.png'))
+    @php($favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png')))
     <link rel="shortcut icon" href="{{ $favIcon }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -28,7 +28,7 @@
 <body>
 <div class="preloader"></div>
 <?php
-$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : 'assets/admin-module/img/placeholder.png');
+$logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/admin-module/img/placeholder.png');
 ?>
 
 <div>

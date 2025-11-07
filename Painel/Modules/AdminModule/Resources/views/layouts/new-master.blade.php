@@ -14,7 +14,7 @@
     <meta name="keywords" content=""/>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @php($favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : 'public/assets/placeholder.png'))
+    @php($favIcon = getBusinessSettingsImageFullPath(key: 'business_favicon', settingType: 'business_information', path: 'business/',  defaultPath : asset('assets/placeholder.png'))
     <link rel="shortcut icon" href="{{ $favIcon }}"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

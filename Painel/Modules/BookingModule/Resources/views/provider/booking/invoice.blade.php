@@ -140,7 +140,7 @@
                     </div>
                     <div class="col company-details">
                         <a target="_blank" href="#">
-                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath: 'public/assets/placeholder.png'))
+                            @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png'))
                             <img width="84" height="17" src="{{$logo}}"
                                  data-holder-rendered="true"/>
                         </a>
