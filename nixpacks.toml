@@ -3,13 +3,13 @@ nixPkgs = ["...", "php82", "php82Packages.composer"]
 
 [phases.install]
 cmds = [
-  "cd Painel && composer clear-cache",
-  "cd Painel && composer dump-autoload --optimize",
-  "cd Painel && composer install --no-dev --optimize-autoloader --no-cache"
+  "composer clear-cache --working-dir=Painel || true",
+  "composer dump-autoload --optimize --working-dir=Painel || true",
+  "composer install --no-dev --optimize-autoloader --no-cache --working-dir=Painel || true"
 ]
 
 [phases.build]
 cmds = []
 
 [start]
-cmd = "cd Painel && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "bash start.sh"
