@@ -28,11 +28,12 @@ return [
     |
     */
 
-    'compiled' => env('VIEW_CACHE_DISABLED', false) 
-        ? null 
-        : env(
-            'VIEW_COMPILED_PATH',
-            realpath(storage_path('framework/views'))
-        ),
+    // Do not call realpath() here because it returns false when the
+    // target directory doesn't yet exist (causes "Please provide a valid
+    // cache path" during early boot). Use the storage path directly so
+    // Laravel can create/resolve it later at runtime.
+    'compiled' => env('VIEW_CACHE_DISABLED', false)
+        ? null
+        : env('VIEW_COMPILED_PATH', storage_path('framework/views')),
 
 ];
