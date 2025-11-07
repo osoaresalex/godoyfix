@@ -47,7 +47,7 @@
 
 <body>
 
-@php(\Log::info('layouts.landing.app: start'))
+@php \Log::info('layouts.landing.app: start'); @endphp
 
 <div id="landing-loader"></div>
 <div class="navbar-top">
@@ -58,16 +58,16 @@
             </div>
             <div class="hs-unfold top-padding">
                 <div>
-                    @php( $local = session()->has('landing_local')?session('landing_local'):'en')
-                    @php($siteDirection = session()->has('landing_site_direction')?session('landing_site_direction'):'ltr')
-                    @php($lang = Modules\BusinessSettingsModule\Entities\BusinessSettings::where('key_name','system_language')->first())
+                    @php $local = session()->has('landing_local')?session('landing_local'):'en'; @endphp
+                    @php $siteDirection = session()->has('landing_site_direction')?session('landing_site_direction'):'ltr'; @endphp
+                    @php $lang = Modules\BusinessSettingsModule\Entities\BusinessSettings::where('key_name','system_language')->first(); @endphp
                     @if ($lang)
                         <div class="topbar-text dropdown d-flex">
                             <a class="topbar-link dropdown-toggle d-flex align-items-center title-color gap-1 lagn-drop-btn justify-content-between align-items-center"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @foreach ($lang['live_values'] as $data)
                                     @if($data['code']==$local)
-                                        @php($language = collect(LANGUAGES)->where('code', $data['code'])->first())
+                                        @php $language = collect(LANGUAGES)->where('code', $data['code'])->first(); @endphp
                                         @if($language)
                                             <span class="d-flex align-items-center gap-2">
                                                 <span class="material-icons">language</span>
@@ -83,7 +83,7 @@
                             <ul class="dropdown-menu lang-menu">
                                 @foreach($lang['live_values'] as $key =>$data)
                                     @if($data['status']==1)
-                                        @php($language = collect(LANGUAGES)->where('code', $data['code'])->first())
+                                        @php $language = collect(LANGUAGES)->where('code', $data['code'])->first(); @endphp
                                         <li>
                                             <a class="dropdown-item d-flex gap-2 align-items-center py-2 justify-content-between"
                                                href="{{route('lang',[$data['code']])}}">
@@ -120,7 +120,7 @@
     </div>
 </div>
 <header>
-    @php($logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png')))
+    @php $logo = getBusinessSettingsImageFullPath(key: 'business_logo', settingType: 'business_information', path: 'business/', defaultPath : asset('assets/placeholder.png')); @endphp
 
     <div class="navbar-bottom">
         <div class="container">
@@ -214,7 +214,7 @@
                         </div>
                     </div>
 
-                    @php($footerPages = \Modules\BusinessSettingsModule\Entities\BusinessPageSetting::where('is_active', 1)->orderBy('created_at', 'ASC')->get())
+                    @php $footerPages = \Modules\BusinessSettingsModule\Entities\BusinessPageSetting::where('is_active', 1)->orderBy('created_at', 'ASC')->get(); @endphp
                     <div class="footer__wrapper-widget">
                         <ul class="footer__wrapper-link">
                             <li>
@@ -264,9 +264,9 @@
             {{bs_data($settings,'footer_text', 1)}}
         </div>
     </div>
-@php(\Log::info('layouts.landing.app: before footer'))
+@php \Log::info('layouts.landing.app: before footer'); @endphp
 </footer>
-@php(\Log::info('layouts.landing.app: end'))
+@php \Log::info('layouts.landing.app: end'); @endphp
 
 <script src="{{asset('assets/landing')}}/js/jquery-3.6.0.min.js"></script>
 <script src="{{asset('assets/landing')}}/js/viewport.jquery.js"></script>

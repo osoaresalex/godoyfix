@@ -1,10 +1,12 @@
 @extends('layouts.landing.app')
 
-@section('title', bs_data($settings, 'business_name', 1))
+@section('title')
+    {{ bs_data($settings, 'business_name', 1) }}
+@endsection
 
 @section('content')
-    @php(\Log::info('welcome: start'))
     @php
+        \Log::info('welcome: start');
         // Garantir que variáveis existam para evitar ErrorException de "Undefined variable"
         $settingss = $settingss ?? collect();
         $topImageData = $topImageData ?? [];
@@ -20,7 +22,7 @@
         $features = $features ?? [];
         $testimonials = $testimonials ?? [];
     @endphp
-    @php(\Log::info('welcome: before banner-section'))
+    @php \Log::info('welcome: before banner-section'); @endphp
     <section class="banner-section">
         <div class="container">
             <div class="banner-wrapper justify-content-between">
@@ -75,8 +77,8 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after banner-section'))
-    @php(\Log::info('welcome: before service-section'))
+    @php \Log::info('welcome: after banner-section'); @endphp
+    @php \Log::info('welcome: before service-section'); @endphp
     <section class="service-section py-25">
         <div class="scroll-elem" id="service"></div>
         <div class="container position-relative">
@@ -148,8 +150,8 @@
 
         </div>
     </section>
-    @php(\Log::info('welcome: after service-section'))
-    @php(\Log::info('welcome: before about-section'))
+    @php \Log::info('welcome: after service-section'); @endphp
+    @php \Log::info('welcome: before about-section'); @endphp
     <section class="about-section py-25">
         <div class="scroll-elem" id="about"></div>
         <div class="container">
@@ -164,7 +166,7 @@
                     </a>
                 </div>
                 <div class="about__wrapper-thumb">
-                    @php($aboutUsImage = getBusinessSettingsImageFullPath(key: 'about_us_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png')))
+                    @php $aboutUsImage = getBusinessSettingsImageFullPath(key: 'about_us_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png')); @endphp
                     <img class="main-img" src="{{ $aboutUsImage }}" alt="{{ translate('image') }}">
                     <div class="bg-img">
                         <img src="{{ asset('assets/landing') }}/img/about-us.png" alt="{{ translate('image') }}">
@@ -173,8 +175,8 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after about-section'))
-    @php(\Log::info('welcome: before contact-info-section'))
+    @php \Log::info('welcome: after about-section'); @endphp
+    @php \Log::info('welcome: before contact-info-section'); @endphp
     <section class="contact-info-section py-25 wow animate__fadeInUp">
         <div class="container">
             <div class="row g-2 g-sm-3 g-md-4 justify-content-center">
@@ -196,8 +198,8 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after contact-info-section'))
-    @php(\Log::info('welcome: before app-slider-section'))
+    @php \Log::info('welcome: after contact-info-section'); @endphp
+    @php \Log::info('welcome: before app-slider-section'); @endphp
     <section class="app-slider-section pt-25 pb-50">
         <div class="container">
             <div class="app-slider-wrapper">
@@ -243,12 +245,12 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after app-slider-section'))
-    @php(\Log::info('welcome: before cta-section'))
+    @php \Log::info('welcome: after app-slider-section'); @endphp
+    @php \Log::info('welcome: before cta-section'); @endphp
     <section class="cta-section py-25">
         <div class="container">
             <div class="cta-main">
-                @php($providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png')))
+                @php $providerSectionImage = getBusinessSettingsImageFullPath(key: 'provider_section_image', settingType: 'landing_images', path: 'landing-page/', defaultPath : asset('assets/placeholder.png')); @endphp
 
                 <div class="cta-wrapper bg__img" data-img="{{ asset('assets/landing') }}/img/cta-bg.png">
                     <img width="238" src="{{ $providerSectionImage }}" alt="{{ translate('image') }}"
@@ -269,8 +271,8 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after cta-section'))
-    @php(\Log::info('welcome: before testimonial-section'))
+    @php \Log::info('welcome: after cta-section'); @endphp
+    @php \Log::info('welcome: before testimonial-section'); @endphp
     <section class="testimonial-section pt-25 pb-50">
         <div class="container-fluid">
             <h3 class="section-title mb-5"> {{ bs_data_text($settingss, 'bottom_title', 1) }}</h3>
@@ -330,6 +332,6 @@
             </div>
         </div>
     </section>
-    @php(\Log::info('welcome: after testimonial-section'))
-    @php(\Log::info('welcome: end'))
+    @php \Log::info('welcome: after testimonial-section'); @endphp
+    @php \Log::info('welcome: end'); @endphp
 @endsection
