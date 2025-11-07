@@ -140,12 +140,8 @@ php artisan config:cache 2>&1 | tee -a storage/logs/config-cache.log || {
     echo "Contents of config-cache.log:"
     cat storage/logs/config-cache.log
 }
-echo "Running route:cache..."
-php artisan route:cache 2>&1 | tee -a storage/logs/route-cache.log || {
-    echo "ERROR: route:cache failed with exit code $?"
-    echo "Contents of route-cache.log:"
-    cat storage/logs/route-cache.log
-}
+# SKIP route:cache - the app has duplicate route names that prevent caching
+echo "SKIPPING route:cache (duplicate route names in AdminModule)"
 echo "=== CACHES REBUILT ==="
 
 echo "=== RUNNING MIGRATIONS ==="
