@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  # Public entrypoint with automatic HTTPS via Let's Encrypt
+  caddy:
+    image: caddy:2-alpine
+    container_name: demandium_caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./tools/docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./Painel/public:/srv:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+    networks:
+      - appnet
+
+  # Do NOT expose database or redis to the internet in production
+  mysql:
+    ports: []
+  redis:
+    ports: []
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  appnet:
+    external: false

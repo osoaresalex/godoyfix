@@ -1,0 +1,22 @@
+# Substitua example.com pelo seu domínio. Você pode listar múltiplos domínios separados por vírgula.
+example.com {
+  root * /srv
+  php_fastcgi app:9000
+  encode gzip
+  file_server
+
+  # Segurança básica
+  header {
+    X-Frame-Options "SAMEORIGIN"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+  }
+}
+
+# Bloco opcional para acessar via HTTP pelo IP (sem domínio) durante testes
+:80 {
+  root * /srv
+  php_fastcgi app:9000
+  encode gzip
+  file_server
+}
