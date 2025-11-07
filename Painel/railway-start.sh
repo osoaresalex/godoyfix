@@ -35,6 +35,10 @@ echo "=== DIRECTORIES CREATED ==="
 # Ensure Laravel uses runtime storage path for compiled views (avoid stale cached config)
 export VIEW_COMPILED_PATH="$(pwd)/storage/framework/views"
 
+# Temporary safeguard: disable view cache during startup to avoid compiled-path errors
+# (this prevents Blade from trying to write/read compiled views path during bootstrap)
+export VIEW_CACHE_DISABLED=true
+
 # Remove any cached bootstrap files that could store an invalid compiled path
 if [ -d "bootstrap/cache" ]; then
     echo "Cleaning bootstrap/cache files before package discovery..."
