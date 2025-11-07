@@ -1,7 +1,5 @@
 #!/bin/bash
+# Use the Painel startup script so we run the full cache-clear + serve flow there
 cd Painel
-composer install --no-dev --optimize-autoloader
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan serve --host=0.0.0.0 --port=$PORT
+chmod +x railway-start.sh || true
+./railway-start.sh
