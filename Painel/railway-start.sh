@@ -15,6 +15,16 @@ else
 fi
 echo "=== COMPOSER DEPENDENCIES INSTALLED ==="
 
+# Create required Laravel directories
+echo "=== CREATING REQUIRED DIRECTORIES ==="
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
+mkdir -p storage/framework/cache/data
+mkdir -p storage/logs
+mkdir -p bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+echo "=== DIRECTORIES CREATED ==="
+
 # Delete cache files
 echo "=== DELETING CACHE FILES ==="
 rm -rf storage/framework/views/* || true
