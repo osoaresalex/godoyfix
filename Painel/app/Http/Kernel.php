@@ -30,6 +30,7 @@ class Kernel extends HttpKernel
        // \Illuminate\Http\Middleware\HandleCors::class,
         ZoneAdder::class,
         \App\Http\Middleware\FixAssetUrls::class,  // Fix /public/assets/ URLs for Railway
+        \App\Http\Middleware\SetCspHeaders::class,  // Set permissive CSP for landing pages
     ];
 
     /**
