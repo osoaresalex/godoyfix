@@ -43,8 +43,24 @@ test -w storage/framework/views && echo "✓ storage/framework/views is writable
 test -w storage/framework/cache/data && echo "✓ storage/framework/cache/data is writable" || echo "✗ storage/framework/cache/data NOT writable"
 echo "=== DIRECTORIES CREATED ==="
 
-# CRITICAL ENV VARS: Force Laravel to use correct paths and disable view cache
-export VIEW_COMPILED_PATH="$(pwd)/storage/framework/views"
+# CRITICAL: Write env vars to .env file BEFORE any Laravel command runs
+# This ensures Laravel always reads these values during config load
+echo "Setting up .env with view cache configuration..."
+if [ -f ".env" ]; then
+    # Remove old VIEW_COMPILED_PATH and VIEW_CACHE_DISABLED if they exist
+    sed -i '/^VIEW_COMPILED_PATH=/d' .env
+    sed -i '/^VIEW_CACHE_DISABLED=/d' .env
+fi
+
+# Append critical config to .env
+echo "VIEW_COMPILED_PATH=/app/Painel/storage/framework/views" >> .env
+echo "VIEW_CACHE_DISABLED=true" >> .env
+
+echo ".env file updated with view cache configuration"
+cat .env | grep VIEW_ || echo "Warning: VIEW_ vars not found in .env"
+
+# Also export as env vars for current shell session
+export VIEW_COMPILED_PATH="/app/Painel/storage/framework/views"
 export VIEW_CACHE_DISABLED=true
 export APP_DEBUG=true
 export LOG_LEVEL=debug
@@ -52,7 +68,6 @@ export LOG_LEVEL=debug
 echo "Environment variables set:"
 echo "  VIEW_COMPILED_PATH=$VIEW_COMPILED_PATH"
 echo "  VIEW_CACHE_DISABLED=$VIEW_CACHE_DISABLED"
-echo "  APP_DEBUG=$APP_DEBUG"
 
 # Remove any cached bootstrap files that could store an invalid compiled path
 if [ -d "bootstrap/cache" ]; then
@@ -61,6 +76,7 @@ if [ -d "bootstrap/cache" ]; then
     rm -f bootstrap/cache/services.php || true
     rm -f bootstrap/cache/packages.php || true
     rm -f bootstrap/cache/routes.php || true
+    rm -f bootstrap/cache/modules.php || true
 fi
 
 # Install Composer dependencies WITHOUT running scripts (to avoid cache path error)
@@ -84,9 +100,15 @@ echo "=== COMPOSER DEPENDENCIES INSTALLED ==="
 # Delete cache files
 echo "=== DELETING CACHE FILES ==="
 rm -rf storage/framework/views/* || true
-rm -rf storage/framework/cache/* || true
+rm -rf storage/framework/cache/data || true
+# Recreate data directory after deletion
+mkdir -p storage/framework/cache/data
 rm -rf bootstrap/cache/*.php || true
 echo "=== CACHE FILES DELETED ==="
+
+# CRITICAL: Clear bootstrap cache again before running artisan commands
+echo "Removing bootstrap cache files before artisan commands..."
+rm -f bootstrap/cache/config.php bootstrap/cache/services.php bootstrap/cache/packages.php bootstrap/cache/routes.php bootstrap/cache/modules.php || true
 
 # Clear Laravel caches with detailed logging
 echo "=== CLEARING LARAVEL CACHES ==="
