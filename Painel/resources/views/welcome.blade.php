@@ -4,7 +4,7 @@
 
 @section('content')
     @php(\Log::info('welcome: start'))
-    @php(
+    @php
         // Garantir que variáveis existam para evitar ErrorException de "Undefined variable"
         $settingss = $settingss ?? collect();
         $topImageData = $topImageData ?? [];
@@ -19,7 +19,7 @@
         $specialities = $specialities ?? [];
         $features = $features ?? [];
         $testimonials = $testimonials ?? [];
-    )
+    @endphp
     @php(\Log::info('welcome: before banner-section'))
     <section class="banner-section">
         <div class="container">
