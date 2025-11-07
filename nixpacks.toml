@@ -2,11 +2,7 @@
 nixPkgs = ["...", "php82", "php82Packages.composer"]
 
 [phases.install]
-cmds = [
-  "composer clear-cache --working-dir=Painel || true",
-  "composer dump-autoload --optimize --working-dir=Painel || true",
-  "composer install --no-dev --optimize-autoloader --no-cache --working-dir=Painel || true"
-]
+cmds = []
 
 [phases.build]
 cmds = []
