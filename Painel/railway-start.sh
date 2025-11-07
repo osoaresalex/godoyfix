@@ -1,8 +1,19 @@
 #!/bin/bash
 
+# Enable verbose logging for debugging
+set -x
+
+# Create debug log file
+DEBUG_LOG="storage/logs/railway-startup-debug.log"
+mkdir -p storage/logs
+exec 2>&1 | tee -a "$DEBUG_LOG"
+
 echo "============================================"
 echo "RAILWAY STARTUP SCRIPT RUNNING"
 echo "PWD: $(pwd)"
+echo "Date: $(date)"
+echo "PHP Version: $(php -v | head -n 1)"
+echo "Composer Version: $(composer --version 2>/dev/null || echo 'not found')"
 echo "============================================"
 
 # CRITICAL: Create cache directories BEFORE Composer (Laravel needs them during package:discover)
@@ -32,12 +43,16 @@ test -w storage/framework/views && echo "✓ storage/framework/views is writable
 test -w storage/framework/cache/data && echo "✓ storage/framework/cache/data is writable" || echo "✗ storage/framework/cache/data NOT writable"
 echo "=== DIRECTORIES CREATED ==="
 
-# Ensure Laravel uses runtime storage path for compiled views (avoid stale cached config)
+# CRITICAL ENV VARS: Force Laravel to use correct paths and disable view cache
 export VIEW_COMPILED_PATH="$(pwd)/storage/framework/views"
-
-# Temporary safeguard: disable view cache during startup to avoid compiled-path errors
-# (this prevents Blade from trying to write/read compiled views path during bootstrap)
 export VIEW_CACHE_DISABLED=true
+export APP_DEBUG=true
+export LOG_LEVEL=debug
+
+echo "Environment variables set:"
+echo "  VIEW_COMPILED_PATH=$VIEW_COMPILED_PATH"
+echo "  VIEW_CACHE_DISABLED=$VIEW_CACHE_DISABLED"
+echo "  APP_DEBUG=$APP_DEBUG"
 
 # Remove any cached bootstrap files that could store an invalid compiled path
 if [ -d "bootstrap/cache" ]; then
@@ -52,9 +67,15 @@ fi
 echo "=== INSTALLING COMPOSER DEPENDENCIES ==="
 if [ ! -d "vendor" ] || [ ! -f "vendor/autoload.php" ]; then
     echo "vendor/ not found or incomplete, running composer install WITHOUT post-install scripts..."
-    composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+    composer install --no-dev --optimize-autoloader --no-interaction --no-scripts 2>&1 | tee -a storage/logs/composer-install.log
+    echo "Composer install exit code: $?"
+    
     echo "Composer packages installed, now running package discovery manually..."
-    php artisan package:discover --ansi || echo "Warning: package:discover failed, continuing..."
+    php artisan package:discover --ansi 2>&1 | tee -a storage/logs/package-discover.log || {
+        echo "ERROR: package:discover failed with exit code $?"
+        echo "Last 50 lines of package discover output:"
+        tail -n 50 storage/logs/package-discover.log
+    }
 else
     echo "vendor/ exists, skipping composer install"
 fi
@@ -67,24 +88,58 @@ rm -rf storage/framework/cache/* || true
 rm -rf bootstrap/cache/*.php || true
 echo "=== CACHE FILES DELETED ==="
 
-# Clear Laravel caches
+# Clear Laravel caches with detailed logging
 echo "=== CLEARING LARAVEL CACHES ==="
-php artisan cache:clear || true
-php artisan view:clear || true
-php artisan config:clear || true
-php artisan route:clear || true
-php artisan optimize:clear || true
+echo "Running cache:clear..."
+php artisan cache:clear 2>&1 | tee -a storage/logs/cache-clear.log || echo "cache:clear failed with exit code $?"
+echo "Running view:clear..."
+php artisan view:clear 2>&1 | tee -a storage/logs/view-clear.log || echo "view:clear failed with exit code $?"
+echo "Running config:clear..."
+php artisan config:clear 2>&1 | tee -a storage/logs/config-clear.log || echo "config:clear failed with exit code $?"
+echo "Running route:clear..."
+php artisan route:clear 2>&1 | tee -a storage/logs/route-clear.log || echo "route:clear failed with exit code $?"
+echo "Running optimize:clear..."
+php artisan optimize:clear 2>&1 | tee -a storage/logs/optimize-clear.log || echo "optimize:clear failed with exit code $?"
 echo "=== LARAVEL CACHES CLEARED ==="
 
-# Rebuild caches
+# Rebuild caches with detailed logging
 echo "=== REBUILDING CACHES ==="
-php artisan config:cache
-php artisan route:cache
+echo "Running config:cache..."
+php artisan config:cache 2>&1 | tee -a storage/logs/config-cache.log || {
+    echo "ERROR: config:cache failed with exit code $?"
+    echo "Contents of config-cache.log:"
+    cat storage/logs/config-cache.log
+}
+echo "Running route:cache..."
+php artisan route:cache 2>&1 | tee -a storage/logs/route-cache.log || {
+    echo "ERROR: route:cache failed with exit code $?"
+    echo "Contents of route-cache.log:"
+    cat storage/logs/route-cache.log
+}
 echo "=== CACHES REBUILT ==="
 
 echo "=== RUNNING MIGRATIONS ==="
-php artisan migrate --force
+php artisan migrate --force 2>&1 | tee -a storage/logs/migrate.log || {
+    echo "ERROR: migrate failed with exit code $?"
+    echo "Contents of migrate.log:"
+    cat storage/logs/migrate.log
+}
 echo "=== MIGRATIONS COMPLETE ==="
 
+echo "=== FINAL ENVIRONMENT CHECK ==="
+echo "Storage directories status:"
+ls -laR storage/framework/ | head -n 50
+echo "Bootstrap cache status:"
+ls -la bootstrap/cache/
+echo "Checking if compiled view path is valid:"
+php -r "echo 'storage_path result: ' . storage_path('framework/views') . PHP_EOL;"
+php -r "echo 'realpath result: ' . (realpath(storage_path('framework/views')) ?: 'FALSE') . PHP_EOL;"
+php -r "echo 'is_dir: ' . (is_dir(storage_path('framework/views')) ? 'true' : 'false') . PHP_EOL;"
+php -r "echo 'is_writable: ' . (is_writable(storage_path('framework/views')) ? 'true' : 'false') . PHP_EOL;"
+
+echo "=== DEBUG LOGS SAVED TO storage/logs/ ==="
+echo "Available log files:"
+ls -lh storage/logs/*.log 2>/dev/null || echo "No log files found"
+
 echo "=== STARTING SERVER ON PORT $PORT ==="
-php artisan serve --host=0.0.0.0 --port=$PORT
+php artisan serve --host=0.0.0.0 --port=$PORT 2>&1 | tee -a storage/logs/server.log
