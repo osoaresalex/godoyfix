@@ -28,9 +28,9 @@ return [
     |
     */
 
-    // EMERGENCY FIX: Force compiled path to null to prevent cache errors
-    // This disables Blade compilation which causes "Please provide a valid cache path"
-    // Railway deployment will work with runtime compilation (slightly slower but functional)
-    'compiled' => null,
+    // CRITICAL FIX: Always return a valid string path, never null
+    // Laravel's Compiler.php throws exception if cachePath is falsy
+    // Use /tmp/views as emergency fallback if storage path doesn't exist
+    'compiled' => env('VIEW_COMPILED_PATH', '/app/Painel/storage/framework/views'),
 
 ];
