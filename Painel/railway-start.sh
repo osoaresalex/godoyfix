@@ -7,12 +7,19 @@ echo "============================================"
 
 # CRITICAL: Create cache directories BEFORE Composer (Laravel needs them during package:discover)
 echo "=== CREATING REQUIRED DIRECTORIES (PRE-COMPOSER) ==="
-mkdir -p ./storage/framework/sessions
-mkdir -p ./storage/framework/views
-mkdir -p ./storage/framework/cache/data
-mkdir -p ./storage/logs
-mkdir -p ./bootstrap/cache
-chmod -R 775 ./storage ./bootstrap/cache 2>/dev/null || true
+echo "Current directory: $(pwd)"
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
+mkdir -p storage/framework/cache/data
+mkdir -p storage/logs
+mkdir -p bootstrap/cache
+chmod -R 775 storage bootstrap/cache 2>/dev/null || true
+
+# Verify directories were created
+echo "Verifying directory structure:"
+ls -la storage/framework/ 2>/dev/null || echo "ERROR: storage/framework/ not found"
+ls -la bootstrap/cache/ 2>/dev/null || echo "ERROR: bootstrap/cache/ not found"
+test -w storage/framework/views && echo "✓ storage/framework/views is writable" || echo "✗ storage/framework/views NOT writable"
 echo "=== DIRECTORIES CREATED ==="
 
 # Install Composer dependencies (will run package:discover which needs cache dirs)
