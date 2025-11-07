@@ -32,6 +32,18 @@ test -w storage/framework/views && echo "✓ storage/framework/views is writable
 test -w storage/framework/cache/data && echo "✓ storage/framework/cache/data is writable" || echo "✗ storage/framework/cache/data NOT writable"
 echo "=== DIRECTORIES CREATED ==="
 
+# Ensure Laravel uses runtime storage path for compiled views (avoid stale cached config)
+export VIEW_COMPILED_PATH="$(pwd)/storage/framework/views"
+
+# Remove any cached bootstrap files that could store an invalid compiled path
+if [ -d "bootstrap/cache" ]; then
+    echo "Cleaning bootstrap/cache files before package discovery..."
+    rm -f bootstrap/cache/config.php || true
+    rm -f bootstrap/cache/services.php || true
+    rm -f bootstrap/cache/packages.php || true
+    rm -f bootstrap/cache/routes.php || true
+fi
+
 # Install Composer dependencies WITHOUT running scripts (to avoid cache path error)
 echo "=== INSTALLING COMPOSER DEPENDENCIES ==="
 if [ ! -d "vendor" ] || [ ! -f "vendor/autoload.php" ]; then
