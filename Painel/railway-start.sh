@@ -32,11 +32,13 @@ test -w storage/framework/views && echo "✓ storage/framework/views is writable
 test -w storage/framework/cache/data && echo "✓ storage/framework/cache/data is writable" || echo "✗ storage/framework/cache/data NOT writable"
 echo "=== DIRECTORIES CREATED ==="
 
-# Install Composer dependencies (will run package:discover which needs cache dirs)
+# Install Composer dependencies WITHOUT running scripts (to avoid cache path error)
 echo "=== INSTALLING COMPOSER DEPENDENCIES ==="
 if [ ! -d "vendor" ] || [ ! -f "vendor/autoload.php" ]; then
-    echo "vendor/ not found or incomplete, running composer install..."
-    composer install --no-dev --optimize-autoloader --no-interaction
+    echo "vendor/ not found or incomplete, running composer install WITHOUT post-install scripts..."
+    composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+    echo "Composer packages installed, now running package discovery manually..."
+    php artisan package:discover --ansi || echo "Warning: package:discover failed, continuing..."
 else
     echo "vendor/ exists, skipping composer install"
 fi
