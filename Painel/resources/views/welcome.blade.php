@@ -29,21 +29,21 @@
                         {{ bs_data_text($settingss, 'top_sub_title', 1) }}
                     </p>
                     <div class="app-btns d-flex flex-wrap">
-                        @if ($settings->where('key_name', 'app_url_appstore')->first()->is_active ?? 0)
+                        @if ($settings->where('key_name', 'app_url_appstore')->first()?->is_active)
                             <a href="{{ bs_data($settings, 'app_url_appstore', 1) }}">
                                 <img src="{{ asset('assets/landing/img/app-btn/app-store.png') }}"
                                     alt="{{ translate('app store') }}">
                             </a>
                         @endif
 
-                        @if ($settings->where('key_name', 'app_url_playstore')->first()->is_active ?? 0)
+                        @if ($settings->where('key_name', 'app_url_playstore')->first()?->is_active)
                             <a href="{{ bs_data($settings, 'app_url_playstore', 1) }}">
                                 <img src="{{ asset('assets/landing') }}/img/app-btn/google-play.png"
                                     alt="{{ translate('play store') }}">
                             </a>
                         @endif
 
-                        @if ($settings->where('key_name', 'web_url')->first()->is_active ?? 0)
+                        @if ($settings->where('key_name', 'web_url')->first()?->is_active)
                             <a href="{{ bs_data($settings, 'web_url', 1) }}">
                                 <img src="{{ asset('assets/landing') }}/img/app-btn/brows_button.png"
                                     alt="{{ translate('app') }}">
