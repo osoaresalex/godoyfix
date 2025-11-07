@@ -3,6 +3,22 @@
 @section('title', bs_data($settings, 'business_name', 1))
 
 @section('content')
+    @php(
+        // Garantir que variáveis existam para evitar ErrorException de "Undefined variable"
+        $settingss = $settingss ?? collect();
+        $topImageData = $topImageData ?? [];
+        // Preenche imagens de topo com placeholder caso faltem chaves
+        $topImageData = array_merge([
+            'top_image_1' => $topImageData['top_image_1'] ?? asset('assets/placeholder.png'),
+            'top_image_2' => $topImageData['top_image_2'] ?? asset('assets/placeholder.png'),
+            'top_image_3' => $topImageData['top_image_3'] ?? asset('assets/placeholder.png'),
+            'top_image_4' => $topImageData['top_image_4'] ?? asset('assets/placeholder.png'),
+        ], $topImageData);
+        $categories = $categories ?? [];
+        $specialities = $specialities ?? [];
+        $features = $features ?? [];
+        $testimonials = $testimonials ?? [];
+    )
     <section class="banner-section">
         <div class="container">
             <div class="banner-wrapper justify-content-between">
