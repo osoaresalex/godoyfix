@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# Railway start script
-# FIRST: Delete cache files BEFORE any artisan command
-echo "=== DELETING CACHE FILES BEFORE ARTISAN ==="
-rm -rf storage/framework/views/* || true
-rm -rf storage/framework/cache/* || true
-rm -rf bootstrap/cache/*.php || true
+echo "============================================"
+echo "RAILWAY STARTUP SCRIPT RUNNING"
+echo "PWD: $(pwd)"
+echo "============================================"
+
+# FIRST: Delete cache files BEFORE any artisan command (NO PHP YET)
+echo "=== STEP 1: DELETING CACHE FILES (raw rm -rf) ==="
+rm -rfv storage/framework/views/* 2>&1 | head -n 10
+rm -rfv storage/framework/cache/* 2>&1 | head -n 10
+rm -rfv bootstrap/cache/*.php 2>&1 | head -n 10
+ls -la storage/framework/views/ || echo "Views directory empty or missing"
 echo "=== CACHE FILES DELETED ==="
 
 # THEN: Clear Laravel caches
