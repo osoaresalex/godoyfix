@@ -396,11 +396,15 @@ if (!function_exists('getSingleImageFullPath')) {
 
             if (request()->is('api/*')) {
                 if ($page) {
+                    // Remove '/public/' prefix from defaultPath
+                    $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
                     return $defaultPath;
                 }
 
                 return null;
             }
+            // Remove '/public/' prefix from defaultPath
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return $defaultPath;
         }
     }
@@ -415,7 +419,9 @@ if (!function_exists('getIdentityImageFullPath')) {
         foreach ($identityImages as $identityImage) {
             $identityImage = is_array($identityImage) ? $identityImage : ['image' => $identityImage, 'storage' => 'public'];
             $imagePath = $path . $identityImage['image'];
-            $fullPath = $defaultPath;
+            // Remove '/public/' prefix from defaultPath
+            $cleanDefaultPath = preg_replace('#^/?public/#', '', $defaultPath);
+            $fullPath = $cleanDefaultPath;
 
             try {
                 if ($identityImage['storage'] == 's3' && \Illuminate\Support\Facades\Storage::disk('s3')->exists($imagePath)) {
@@ -429,7 +435,7 @@ if (!function_exists('getIdentityImageFullPath')) {
                 $fullPath = asset('storage/' . $imagePath);
             }
 
-            if (request()->is('api/*') && $fullPath == $defaultPath) {
+            if (request()->is('api/*') && $fullPath == $cleanDefaultPath) {
                 continue;
             }else{
                 $identityImageFullPath[] = $fullPath;
@@ -448,6 +454,8 @@ if (!function_exists('getBusinessSettingsImageFullPath')) {
             if (request()->is('api/*')) {
                 return null;
             }
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
 
@@ -468,6 +476,8 @@ if (!function_exists('getBusinessSettingsImageFullPath')) {
             if (request()->is('api/*')) {
                 return null;
             }
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
     }
@@ -480,6 +490,8 @@ if (!function_exists('getDataSettingsImageFullPath')) {
             if (request()->is('api/*')) {
                 return null;
             }
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
 
@@ -500,6 +512,8 @@ if (!function_exists('getDataSettingsImageFullPath')) {
             if (request()->is('api/*')) {
                 return null;
             }
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
     }
@@ -513,17 +527,23 @@ if (!function_exists('getPaymentGatewayImageFullPath')) {
             if (request()->is('api/*')) {
                 return null;
             }
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
         $additionalData = $addonSettings['additional_data'] != null ? json_decode($addonSettings['additional_data']) : null;
 
         if(!$additionalData)
         {
+            // Remove '/public/' prefix before calling asset()
+            $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
             return asset($defaultPath);
         }
 
         if ($additionalData){
             if (!$additionalData->gateway_image){
+                // Remove '/public/' prefix before calling asset()
+                $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
                 return asset($defaultPath);
             }
         }
@@ -553,6 +573,8 @@ if (!function_exists('getPaymentGatewayImageFullPath')) {
             return null;
         }
 
+        // Remove '/public/' prefix before calling asset()
+        $defaultPath = preg_replace('#^/?public/#', '', $defaultPath);
         return asset($defaultPath);
     }
 }
