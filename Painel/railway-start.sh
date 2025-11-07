@@ -58,6 +58,8 @@ fi
 # Append critical config to .env
 echo "VIEW_COMPILED_PATH=/app/Painel/storage/framework/views" >> .env
 echo "VIEW_CACHE_DISABLED=false" >> .env
+sed -i '/^LOG_CHANNEL=/d' .env
+echo "LOG_CHANNEL=stderr" >> .env
 
 echo ".env file updated with view cache configuration"
 echo "Verify .env has VIEW_ vars:"
@@ -68,6 +70,7 @@ export VIEW_COMPILED_PATH="/app/Painel/storage/framework/views"
 export VIEW_CACHE_DISABLED=false
 export APP_DEBUG=true
 export LOG_LEVEL=debug
+export LOG_CHANNEL=stderr
 
 echo "Environment variables set in shell:"
 echo "  VIEW_COMPILED_PATH=$VIEW_COMPILED_PATH"
@@ -157,15 +160,17 @@ echo "Storage directories status:"
 ls -laR storage/framework/ | head -n 50
 echo "Bootstrap cache status:"
 ls -la bootstrap/cache/
-echo "Checking if compiled view path is valid:"
-php -r "echo 'storage_path result: ' . storage_path('framework/views') . PHP_EOL;"
-php -r "echo 'realpath result: ' . (realpath(storage_path('framework/views')) ?: 'FALSE') . PHP_EOL;"
-php -r "echo 'is_dir: ' . (is_dir(storage_path('framework/views')) ? 'true' : 'false') . PHP_EOL;"
-php -r "echo 'is_writable: ' . (is_writable(storage_path('framework/views')) ? 'true' : 'false') . PHP_EOL;"
+echo "Checking compiled view directory with shell checks:"
+echo "path: storage/framework/views"
+echo "realpath: $(realpath storage/framework/views || echo 'FALSE')"
+test -d storage/framework/views && echo "is_dir: true" || echo "is_dir: false"
+test -w storage/framework/views && echo "is_writable: true" || echo "is_writable: false"
 
 echo "=== DEBUG LOGS SAVED TO storage/logs/ ==="
 echo "Available log files:"
 ls -lh storage/logs/*.log 2>/dev/null || echo "No log files found"
 
-echo "=== STARTING SERVER ON PORT $PORT ==="
-php artisan serve --host=0.0.0.0 --port=$PORT 2>&1 | tee -a storage/logs/server.log
+echo "=== STARTING SERVER ON PORT ${PORT:-8080} ==="
+touch storage/logs/laravel.log
+tail -n 0 -F storage/logs/laravel.log &
+php artisan serve --host=0.0.0.0 --port=${PORT:-8080} 2>&1 | tee -a storage/logs/server.log
