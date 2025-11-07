@@ -15,6 +15,12 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// Force ASSET_URL to remove /public/ prefix for Railway deployment
+if (!isset($_ENV['ASSET_URL']) || empty($_ENV['ASSET_URL'])) {
+    $_ENV['ASSET_URL'] = $_ENV['APP_URL'] ?? 'https://godoyfix-production.up.railway.app';
+}
+putenv('ASSET_URL=' . $_ENV['ASSET_URL']);
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
