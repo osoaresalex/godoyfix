@@ -47,6 +47,8 @@
 
 <body>
 
+@php(\Log::info('layouts.landing.app: start'))
+
 <div id="landing-loader"></div>
 <div class="navbar-top">
     <div class="container">
@@ -262,7 +264,9 @@
             {{bs_data($settings,'footer_text', 1)}}
         </div>
     </div>
+@php(\Log::info('layouts.landing.app: before footer'))
 </footer>
+@php(\Log::info('layouts.landing.app: end'))
 
 <script src="{{asset('assets/landing')}}/js/jquery-3.6.0.min.js"></script>
 <script src="{{asset('assets/landing')}}/js/viewport.jquery.js"></script>
